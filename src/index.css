@@ -1,6 +1,11 @@
 /* CSS reset from https://github.com/shannonmoeller/reset-css */
 @import "reset-css";
 
+@font-face {
+  font-family: "Jost";
+  src: url("./assets/fonts/Jost-Variable.ttf") format("truetype");
+}
+
 /* Set everything to use box-sizing: border-box */
 html {
   -webkit-box-sizing: border-box;
@@ -13,4 +18,71 @@ html {
   -webkit-box-sizing: inherit;
   -moz-box-sizing: inherit;
   box-sizing: inherit;
+}
+
+:root {
+  /* Colors */
+  --color-purple: rgb(173, 31, 234);
+  --color-blue: rgb(70, 97, 230);
+  --color-sky-blue: rgb(98 188, 250);
+  --color-faded-blue: rgb(100, 113, 150);
+  --color-dark-blue-1: rgb(55, 63, 104);
+  --color-dark-blue-2: rgb(58, 67, 116);
+  --color-white: rgb(255, 255, 255);
+  --color-off-white-1: rgb(247, 248, 253);
+  --color-off-white-2: rgb(242, 244, 255);
+  --color-coral: rgb(244, 159, 133);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Jost", sans-serif;
+  font-weight: 700;
+}
+
+h1 {
+  line-height: 35px;
+  letter-spacing: -0.33px;
+  font-size: 24px;
+}
+
+h2 {
+  line-height: 29px;
+  letter-spacing: -0.25px;
+  font-size: 20px;
+}
+
+h3 {
+  line-height: 26px;
+  letter-spacing: -0.25px;
+  font-size: 18px;
+}
+
+h4 {
+  line-height: 20px;
+  letter-spacing: -0.2px;
+  font-size: 14px;
+}
+
+.bodyTypeOne {
+  font-family: "Jost", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 23px;
+}
+
+.bodyTypeTwo {
+  font-family: "Jost", sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 22px;
+}
+
+.bodyTypeThree {
+  font-family: "Jost", sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 19px;
 }
