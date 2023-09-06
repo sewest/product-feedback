@@ -1,2 +1,16 @@
 /* CSS reset from https://github.com/shannonmoeller/reset-css */
 @import "reset-css";
+
+/* Set everything to use box-sizing: border-box */
+html {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit;
+}
