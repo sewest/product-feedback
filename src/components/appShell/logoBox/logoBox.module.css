@@ -1,0 +1,91 @@
+.logoBox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: radial-gradient(166.82% 166.82% at 103.9% -10.39%, #e84d70 0%, #a337f6 53.09%, #28a7ed 100%);
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 1rem 1.5rem;
+  height: 4.5rem;
+  overflow: hidden;
+  z-index: 3;
+  position: relative;
+}
+
+/* Sets an overlay over the main content, but underneath the logobox and drawer */
+.overlay {
+  background-color: black;
+  opacity: 0.5;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+
+.logo,
+.logoBox p {
+  color: var(--color-white);
+  font-family: "Jost", sans-serif;
+}
+
+.logo {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: -0.01169rem;
+  margin-bottom: 0.5rem;
+}
+
+.logoBox p {
+  font-size: var(--font-size-xxs);
+  font-weight: var(--font-weight-medium);
+  opacity: 0.75;
+}
+
+img[alt="close"],
+img[alt="hamburger"] {
+  cursor: pointer;
+  transition: all 0.25s linear;
+  position: absolute;
+  right: 1.5rem;
+}
+
+.hidden {
+  z-index: -10;
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+@media screen and (min-width: 768px) {
+  .logoBox {
+    background: radial-gradient(166.82% 166.82% at 103.9% -10.39%, #e84d70 0%, #a337f6 53.09%, #28a7ed 100%);
+    padding: 1.5rem;
+    align-items: flex-end;
+    width: 13.9375rem;
+    height: 11.125rem;
+    border-radius: 0.625rem;
+  }
+
+  .logo {
+    font-size: var(--font-size-xl);
+    letter-spacing: -0.01563rem;
+  }
+
+  .logoBox p {
+    font-size: var(--font-size-sm);
+  }
+
+  img {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .logoBox {
+    background-image: radial-gradient(circle at 264.945px -14.2296px, #e84d70, #a337f6 53.09%, #28a7ed);
+    width: 15.9375rem;
+    height: 8.5625rem;
+    flex-shrink: 0;
+  }
+}

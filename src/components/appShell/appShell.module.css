@@ -1,0 +1,40 @@
+.drawer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+  background-color: var(--color-off-white-1);
+  position: absolute;
+  right: 0;
+  height: calc(100vh - 72px);
+  width: 0;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+  padding-top: 1.5rem;
+  z-index: 3;
+}
+
+.drawerOpen {
+  width: 16.9375rem; /* width of content boxes and padding */
+  height: calc(100vh - 72px); /* 100vh - LogoBox Height */
+  padding: 1.5rem;
+}
+
+@media screen and (min-width: 768px) {
+  .appHeader {
+    display: flex;
+    justify-content: center;
+    gap: 0.63rem;
+    height: 11.25rem;
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .appHeader {
+    flex-direction: column;
+    height: unset;
+    width: unset;
+    min-width: 15.9375rem;
+  }
+}

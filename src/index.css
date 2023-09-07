@@ -20,69 +20,38 @@ html {
   box-sizing: inherit;
 }
 
+body {
+  background-color: var(--color-off-white-1);
+  font-family: "Jost", sans-serif;
+  width: 100vw;
+  height: 100vh;
+}
+
 :root {
   /* Colors */
-  --color-purple: rgb(173, 31, 234);
-  --color-blue: rgb(70, 97, 230);
-  --color-sky-blue: rgb(98 188, 250);
-  --color-faded-blue: rgb(100, 113, 150);
-  --color-dark-blue-1: rgb(55, 63, 104);
-  --color-dark-blue-2: rgb(58, 67, 116);
-  --color-white: rgb(255, 255, 255);
-  --color-off-white-1: rgb(247, 248, 253);
-  --color-off-white-2: rgb(242, 244, 255);
-  --color-coral: rgb(244, 159, 133);
-}
+  --color-purple: #ad1fea;
+  --color-blue: #4661e6;
+  --color-lavender: #cfd7ff;
+  --color-sky-blue: #62bcfa;
+  --color-faded-blue: #647196;
+  --color-dark-blue-1: #373f68;
+  --color-dark-blue-2: #3a4374;
+  --color-white: #ffffff;
+  --color-off-white-1: #f7f8fd;
+  --color-off-white-2: #f2f4ff;
+  --color-coral: #f49f85;
 
-h1,
-h2,
-h3,
-h4 {
-  font-family: "Jost", sans-serif;
-  font-weight: 700;
-}
+  /* Typography */
+  --font-size-xxs: 0.8125rem;
+  --font-size-xs: 0.875rem;
+  --font-size-sm: 0.9375rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-xxl: 1.5rem;
 
-h1 {
-  line-height: 35px;
-  letter-spacing: -0.33px;
-  font-size: 24px;
-}
-
-h2 {
-  line-height: 29px;
-  letter-spacing: -0.25px;
-  font-size: 20px;
-}
-
-h3 {
-  line-height: 26px;
-  letter-spacing: -0.25px;
-  font-size: 18px;
-}
-
-h4 {
-  line-height: 20px;
-  letter-spacing: -0.2px;
-  font-size: 14px;
-}
-
-.bodyTypeOne {
-  font-family: "Jost", sans-serif;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 23px;
-}
-
-.bodyTypeTwo {
-  font-family: "Jost", sans-serif;
-  font-weight: 400;
-  font-size: 15px;
-  line-height: 22px;
-}
-
-.bodyTypeThree {
-  font-family: "Jost", sans-serif;
-  font-weight: 600;
-  font-size: 13px;
-  line-height: 19px;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semi-bold: 600;
+  --font-weight-bold: 700;
 }
