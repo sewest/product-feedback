@@ -16,7 +16,7 @@
 
 .drawerOpen {
   width: 16.9375rem; /* width of content boxes and padding */
-  height: calc(100vh - 72px); /* LogoBox Height */
+  height: calc(100vh - 72px); /* 100vh - LogoBox Height */
   padding: 1.5rem;
 }
 

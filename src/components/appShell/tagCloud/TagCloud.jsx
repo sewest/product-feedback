@@ -2,6 +2,11 @@ import data from "../../../assets/data/data.json";
 import Chip from "../../chip/Chip";
 import styles from "./tagCloud.module.css";
 
+/**
+ * Renders a box with a list of category tags.
+ *
+ * @return {JSX.Element} The rendered tag cloud component.
+ */
 export default function TagCloud() {
   const uniqueCategories = new Set();
 

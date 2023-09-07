@@ -5,7 +5,7 @@ import TagCloud from "./tagCloud/TagCloud";
 import styles from "./appShell.module.css";
 
 /**
- * Renders the application shell.
+ * Renders the application shell that contains the logo box, tag cloud, and roadmap.
  *
  * @return {JSX.Element} The JSX element representing the application shell.
  */

@@ -1,6 +1,11 @@
 import { Link } from "react-router-dom";
 import styles from "./roadmapPreview.module.css";
 
+/**
+ * Renders a preview table with data about the roadmap.
+ *
+ * @return {JSX.Element} The rendered roadmap preview.
+ */
 export default function RoadmapPreview() {
   return (
     <section className={styles.roadmapPreview}>

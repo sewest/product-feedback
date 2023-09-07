@@ -2,6 +2,13 @@ import iconClose from "../../../assets/images/logoBox/iconClose.svg";
 import hamburger from "../../../assets/images/logoBox/iconHamburger.svg";
 import styles from "./logoBox.module.css";
 
+/**
+ * Renders a logo box component.
+ *
+ * @param {boolean} isOpen - Determines if the drawer is open or closed.
+ * @param {function} setIsOpen - Sets the state of the isOpen variable.
+ * @return {JSX.Element} The rendered logo box component.
+ */
 export default function LogoBox({ isOpen, setIsOpen }) {
   return (
     <>

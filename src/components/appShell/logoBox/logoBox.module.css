@@ -12,6 +12,7 @@
   position: relative;
 }
 
+/* Sets an overlay over the main content, but underneath the logobox and drawer */
 .overlay {
   background-color: black;
   opacity: 0.5;
