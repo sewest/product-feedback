@@ -1,0 +1,23 @@
+.chip {
+  padding: 0.35rem 1rem;
+  border-radius: 0.625rem;
+  background: var(--color-off-white-2);
+  color: #4661e6;
+  font-family: Jost;
+  font-size: var(--font-size-xxs);
+  font-style: normal;
+  font-weight: var(--font-weight-semi-bold);
+  line-height: normal;
+  width: fit-content;
+  height: fit-content;
+}
+
+.chip:hover {
+  cursor: pointer;
+  background: var(--color-lavender);
+}
+
+.activeChip {
+  background: var(--color-blue);
+  color: var(--color-white);
+}
