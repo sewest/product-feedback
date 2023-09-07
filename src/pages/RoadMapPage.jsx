@@ -1,3 +1,3 @@
-export default function RoadMapPage() {
-  return <h1>RoadMapPage</h1>;
+export default function RoadmapPage() {
+  return <h1>RoadmapPage</h1>;
 }

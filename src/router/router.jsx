@@ -2,7 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import RootLayout from "../layouts/RootLayout";
 import ErrorPage from "../pages/ErrorPage";
 import HomePage from "../pages/HomePage";
-import RoadMapPage from "../pages/RoadMapPage";
+import RoadmapPage from "../pages/RoadmapPage";
 
 export const router = createBrowserRouter([
   {
@@ -16,7 +16,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/roadmap",
-        element: <RoadMapPage />,
+        element: <RoadmapPage />,
       },
     ],
   },
