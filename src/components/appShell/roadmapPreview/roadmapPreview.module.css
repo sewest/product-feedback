@@ -12,6 +12,7 @@
   text-align: start;
 }
 
+/* Style 'Roadmap' text */
 .roadmapPreview th:first-of-type {
   text-align: left;
   color: #3a4374;
@@ -24,6 +25,7 @@
   margin-bottom: 1.5rem;
 }
 
+/* Style the 'view' link */
 .roadmapPreview a {
   color: var(--color-blue);
   font-family: Jost;
@@ -34,15 +36,7 @@
   text-decoration-line: underline;
 }
 
-.roadmapPreview td:last-of-type,
-.roadmapPreview th:last-of-type {
-  text-align: right;
-}
-
-.roadmapPreview td {
-  vertical-align: middle;
-}
-
+/* Style all bullet points */
 .roadmapPreview span {
   display: inline-block;
   width: 0.5rem;
@@ -50,6 +44,7 @@
   border-radius: 50%;
 }
 
+/* Color each specific bullet point */
 .coralSpan {
   background-color: var(--color-coral);
 }
@@ -62,6 +57,7 @@
   background-color: var(--color-sky-blue);
 }
 
+/* Style all of the non-heading words in the left-hand column */
 .roadmapPreview tbody tr:nth-child(1) td,
 .roadmapPreview tbody tr:nth-child(2) td,
 .roadmapPreview tbody tr:nth-child(3) td {
@@ -73,12 +69,14 @@
   line-height: normal;
 }
 
+/* Set the bullet points and words in a flexbox container and align them */
 .roadmapPreview tbody tr td:first-child {
   display: flex;
   align-items: center;
   gap: 1rem;
 }
 
+/* Style all the numbers*/
 .roadmapPreview tbody tr td:nth-child(2) {
   color: var(--color-faded-blue);
   text-align: right;
