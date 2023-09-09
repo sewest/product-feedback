@@ -1,0 +1,58 @@
+/* Style the outer most container menu */
+.toolbar {
+  width: 100%;
+  height: 3.5rem;
+  background-color: var(--color-dark-blue-1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1.25rem;
+}
+
+/* Style the container for the bulb iconand title */
+.headerContainer {
+  display: none;
+}
+
+.toolbar h2 {
+  color: var(--color-white);
+  font-family: Jost;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -0.25px;
+  width: fit-content;
+}
+
+/* On very small screens, need to reduce the horizontal padding a bit */
+@media screen and (max-width: 340px) {
+  .toolbar {
+    padding: 0.5rem 0.5rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .toolbar {
+    border-radius: 0.625rem;
+    width: 43.0625rem;
+    height: 4.5rem;
+    flex-shrink: 0;
+    gap: 2.375rem;
+    justify-content: flex-start;
+  }
+
+  .headerContainer {
+    width: "fit-content";
+    display: flex;
+    justify-content: flex-start;
+    gap: 1rem;
+    align-items: center;
+  }
+}
+
+@media screen and (min-width: 1300px) {
+  .toolbar {
+    width: 100%;
+  }
+}
