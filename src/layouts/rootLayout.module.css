@@ -1,14 +1,38 @@
+.rootContainer {
+  height: 100%;
+}
+
+main {
+  height: 100%;
+  height: calc(100vh - 4.5rem); /* height - logobox */
+}
+
 @media screen and (min-width: 768px) {
   .rootContainer {
     display: flex;
     flex-direction: column;
+    gap: 2.5rem;
     width: 100%;
     align-items: center;
+    padding: 3.5rem 2.5rem 0 2.5rem;
+  }
+
+  main {
+    width: 100%;
+    height: unset;
   }
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1300px) {
   .rootContainer {
     flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 2rem;
+    padding: 5.87rem 10.31rem 0 10.31rem;
+  }
+
+  main {
+    max-width: 51.5625rem;
   }
 }
