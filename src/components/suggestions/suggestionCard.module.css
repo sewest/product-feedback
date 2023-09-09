@@ -1,0 +1,110 @@
+/* Style the outer containinr article */
+.suggestionCard {
+  width: 100%;
+  height: 12.5rem;
+  flex-shrink: 0;
+  border-radius: 0.625rem;
+  background: var(--color-white);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  padding: 1.5rem;
+  gap: 0.5rem;
+}
+
+.suggestionCard:hover {
+  cursor: pointer;
+}
+
+.suggestionCard:hover h2 {
+  color: var(--color-blue);
+  cursor: pointer;
+}
+
+/* Style the container for the title, short description and chip */
+.cardHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: flex-start;
+}
+
+/* They the title */
+.suggestionCard h2 {
+  color: var(--color-dark-blue-2);
+  font-family: Jost;
+  font-size: 0.8125rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -0.01131rem;
+}
+/* Style the short description */
+.suggestionCard p {
+  color: var(--color-faded-blue);
+  font-family: Jost;
+  font-size: 0.8125rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+/* Style the div that holds the upvote button and the comments on smaller screens */
+.buttonContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  width: 100%;
+}
+
+/* The div that holds the comments icon and number of comments */
+.buttonContainer div {
+  display: flex;
+  gap: 0.25rem;
+  align-items: center;
+}
+
+/* Hide the outer button and comments on smaller screens */
+.outerButtonContainer,
+.outerCommentsContainer {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .suggestionCard {
+    flex-direction: row;
+    height: 9.4375rem;
+    padding: 1.75rem 2rem;
+    justify-content: flex-start;
+    gap: 2.5rem;
+  }
+
+  .suggestionCard h2 {
+    font-size: 1.125rem;
+    letter-spacing: -0.015625rem;
+  }
+
+  .suggestionCard p {
+    font-size: 1rem;
+  }
+
+  /* On larger screens, we need to use the outer button and comments and hide the innter container */
+  .buttonContainer {
+    display: none;
+    flex-direction: row;
+  }
+
+  .outerButtonContainer,
+  .outerCommentsContainer {
+    display: flex;
+  }
+
+  .outerCommentsContainer {
+    align-items: center;
+    height: 100%;
+    gap: 0.5rem;
+    flex-grow: 1;
+    justify-content: flex-end;
+  }
+}
