@@ -30,11 +30,11 @@
   }
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1300px) {
   .appHeader {
     flex-direction: column;
     height: unset;
-    width: unset;
-    min-width: 15.9375rem;
+    width: 100%;
+    max-width: 15.9375rem;
   }
 }

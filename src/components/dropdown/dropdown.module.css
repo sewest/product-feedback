@@ -1,0 +1,127 @@
+/* Style the outer containing div */
+.customSelect {
+  position: relative;
+  width: fit-content;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: var(--color-dark-blue-1);
+  border-radius: 0.625rem;
+}
+
+/* The label for the select */
+.customSelect p {
+  color: var(--color-off-white-2);
+  font-family: Jost;
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+/* The dropdown button */
+.selectButton {
+  display: flex;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  gap: 0.5rem;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--color-off-white-2);
+  font-family: Jost;
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+/* The down arrow */
+.arrow {
+  background: url("../../assets/icons/iconArrowDown.svg") no-repeat;
+  width: 0.65rem;
+  height: 0.65rem;
+  background-position: 0 100%;
+  transition: all 0.5s;
+}
+
+/* The container for the list items. */
+.selectDropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  list-style: none;
+  border-radius: 0.625rem;
+  background: var(--color-white);
+  box-shadow: 0px 10px 40px -7px rgba(55, 63, 104, 0.35);
+  margin-top: 1rem;
+  overflow-y: auto;
+  transition: 0.5s ease;
+  width: 15.9375rem;
+  height: 0;
+  flex-shrink: 0;
+  overflow: hidden;
+  z-index: 3;
+}
+
+/* The list items */
+.selectDropdown li {
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  border-bottom: solid rgba(58, 67, 116, 0.15) 0.0625rem;
+}
+
+/* Improper aesthetics if we don't remove the last border*/
+.selectDropdown li:last-of-type {
+  border: none;
+}
+
+.selectDropdown li label {
+  width: 100%;
+  padding: 0.75rem 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  color: #647196;
+  font-family: Jost;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+/* Hover and focus state */
+.selectDropdown li label:hover,
+.selectDropdown li:focus label {
+  color: var(--color-purple);
+}
+
+/* Place a checkmark next to the selected item */
+.selectDropdown input:checked ~ label {
+  background: url("../../assets/icons/iconCheck.svg") no-repeat;
+  background-position: calc(100% - 1.5rem) 50%;
+}
+
+/* Hide the radio input */
+.selectDropdown input[type="radio"] {
+  position: absolute;
+  left: 0;
+  opacity: 0;
+}
+
+/* When the dropdown is open, rotate the arrow */
+.customSelect.active .arrow {
+  transform: rotate(180deg);
+}
+
+/* When the dropdown is open, show the list */
+.customSelect.active .selectDropdown {
+  opacity: 1;
+  visibility: visible;
+  height: 12rem;
+}
