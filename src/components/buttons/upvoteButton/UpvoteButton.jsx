@@ -1,4 +1,4 @@
-import { ReactComponent as Chevron } from "../../assets/images/buttons/iconArrowUp.svg";
+import { ReactComponent as Chevron } from "../../../assets/images/buttons/iconArrowUp.svg";
 import styles from "./upvoteButton.module.css";
 
 /**
