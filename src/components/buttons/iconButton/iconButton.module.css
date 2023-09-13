@@ -1,0 +1,28 @@
+.iconButton {
+  background: transparent;
+  color: var(--color-faded-blue);
+  text-align: center;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  border: none;
+  width: fit-content;
+  height: fit-content;
+  font-family: Jost;
+  font-size: 0.8125rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-decoration: none;
+}
+
+.iconButton:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+@media screen and (min-width: 768px) {
+  .iconButton {
+    font-size: 0.875rem;
+  }
+}
