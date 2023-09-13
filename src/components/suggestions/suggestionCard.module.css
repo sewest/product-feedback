@@ -1,3 +1,7 @@
+.suggestionCardLink {
+  text-decoration: none;
+}
+
 /* Style the outer containinr article */
 .suggestionCard {
   width: 100%;
@@ -69,6 +73,10 @@
 .outerButtonContainer,
 .outerCommentsContainer {
   display: none;
+}
+
+.zeroReplies {
+  opacity: 0.5;
 }
 
 @media screen and (min-width: 768px) {
