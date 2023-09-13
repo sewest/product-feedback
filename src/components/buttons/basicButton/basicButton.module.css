@@ -1,3 +1,4 @@
+/* Base styles */
 .buttonBase {
   width: 8.375rem;
   height: 2.5rem;
@@ -15,13 +16,35 @@
 .buttonBase:hover {
   cursor: pointer;
 }
-
+/* Purple button */
 .button1 {
   background: #ad1fea;
 }
 
 .button1:hover {
   background-color: #c75af6;
+}
+/* Blue button */
+.button2 {
+  background: var(--color-blue);
+}
+
+.button2:hover {
+  background-color: #7c91f9;
+}
+
+/* A text only button */
+.textButton {
+  padding: 0;
+  background-color: transparent;
+  width: fit-content;
+  height: fit-content;
+  color: var(--color-blue);
+}
+
+.textButton:hover {
+  cursor: pointer;
+  text-decoration: underline;
 }
 
 @media screen and (min-width: 768px) {
@@ -30,5 +53,11 @@
     width: 9.875rem;
     height: 2.75rem;
     font-size: 0.875rem;
+  }
+
+  .textButton {
+    padding: 0;
+    width: fit-content;
+    height: fit-content;
   }
 }
