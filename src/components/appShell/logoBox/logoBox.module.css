@@ -76,7 +76,8 @@ img[alt="hamburger"] {
     font-size: var(--font-size-sm);
   }
 
-  img {
+  img[alt="close"],
+  img[alt="hamburger"] {
     display: none;
   }
 }

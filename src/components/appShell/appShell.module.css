@@ -38,3 +38,7 @@
     max-width: 15.9375rem;
   }
 }
+
+.hidden {
+  display: none;
+}

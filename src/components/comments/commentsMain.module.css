@@ -1,0 +1,89 @@
+.commentsMainContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  height: auto;
+  padding: 1.5rem 1.5rem;
+  width: 100%;
+  align-items: center;
+}
+
+.commentsHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.topButtons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.commentsSection {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-height: fit-content;
+  border-radius: 0.625rem;
+  background-color: var(--color-white);
+  padding: 1.5rem;
+}
+
+.commentsSection h2 {
+  color: #3a4374;
+  font-family: Jost;
+  font-size: 1.125rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -0.01563rem;
+}
+
+.horizontalRule {
+  width: 100%;
+  max-width: 100%;
+  height: 0.0625rem;
+  opacity: 0.25;
+  background-color: #8c92b3;
+  border: none;
+}
+
+.replyContainer {
+  display: flex;
+}
+
+.verticalRule {
+  width: 0.0625rem;
+  opacity: 0.25;
+  background-color: #8c92b3;
+  margin-left: 1.5rem;
+}
+
+.addCommentSection {
+  width: 100%;
+}
+/* On very small screens, if we don't adjust the padding, the vertical rule is cut off when the reply optino is expanded.*/
+@media screen and (max-width: 374px) {
+  .commentsSection {
+    padding: 1rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .commentsMainContainer {
+    width: 43.0625rem;
+    padding: 0;
+  }
+
+  .replyCard {
+    padding: 1.25rem;
+  }
+}
+
+@media screen and (min-width: 1300px) {
+  .commentsMainContainer {
+    width: 45.625rem;
+  }
+}

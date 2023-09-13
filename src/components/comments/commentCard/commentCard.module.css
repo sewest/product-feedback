@@ -1,0 +1,171 @@
+.commentCard {
+  width: 100%;
+  height: fit-content;
+  max-width: 100%;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.commentContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.commentHeader {
+  display: flex;
+  gap: 1rem;
+}
+
+.commentHeader img {
+  border-radius: 2.5rem;
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.commentText h3 {
+  color: #3a4374;
+  font-family: Jost;
+  font-size: 0.8125rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -0.01131rem;
+}
+
+.commentText p {
+  color: #647196;
+  font-family: Jost;
+  font-size: 0.8125rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.replyingTo {
+  color: #ad1fea;
+  font-family: Jost;
+  font-size: 0.8125rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.comment {
+  color: #647196;
+  font-family: Jost;
+  font-size: 0.8125rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  width: 100%;
+}
+
+.reply {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: flex-end;
+}
+
+.reply textarea {
+  display: block;
+  width: 100%;
+  height: 5rem;
+  border-radius: 0.3125rem;
+  background: #f7f8fd;
+  border: none;
+  resize: none;
+  padding: 1rem;
+}
+
+.reply textarea:hover {
+  cursor: pointer;
+  outline: 1px solid var(--color-blue);
+}
+
+.reply textarea::placeholder {
+  color: #8c92b3;
+  font-family: Jost;
+  font-size: 0.8125rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+@media screen and (min-width: 768px) {
+  .commentCard {
+    width: 39.0625rem;
+    padding: 2rem 0;
+  }
+
+  .commentHeader {
+    gap: 2rem;
+  }
+
+  .commentText h3 {
+    font-size: 0.875rem;
+    letter-spacing: -0.01213rem;
+  }
+
+  .commentText p {
+    font-size: 0.875rem;
+  }
+
+  .replyingTo {
+    font-size: 0.9375rem;
+  }
+
+  .innerButton {
+    margin-top: 0.75rem;
+  }
+
+  .comment {
+    font-size: 0.9375rem;
+    max-width: 34.5625rem;
+    align-self: flex-end;
+  }
+
+  .replyText {
+    max-width: 31.5rem;
+  }
+
+  .reply textarea {
+    width: 34.5625rem;
+  }
+}
+
+@media screen and (min-width: 1300px) {
+  .commentCard {
+    width: 41.625rem;
+  }
+
+  .comment {
+    min-width: 37.125rem;
+  }
+
+  .reply {
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: self-start;
+  }
+
+  .reply textarea {
+    width: 28.8125rem;
+    height: 5rem;
+  }
+
+  .outerButton {
+    width: 7.3125rem;
+  }
+
+  .replyText {
+    min-width: unset;
+    max-width: 34rem;
+  }
+}
+
+.hidden {
+  display: none;
+}
