@@ -4,6 +4,7 @@ import AddComment from "./addComment/AddComment";
 import IconButton from "../buttons/iconButton/IconButton";
 import BasicButton from "../buttons/basicButton/BasicButton";
 import { ReactComponent as Chevron } from "../../assets/icons/iconArrowLeft.svg";
+import FeedbackModal from "../feedbackModal/FeedbackModal";
 import styles from "./commentsMain.module.css";
 
 /**
@@ -25,10 +26,12 @@ export default function CommentsMain({ data }) {
     <div className={styles.commentsMainContainer}>
       <section className={styles.commentsHeader}>
         <div className={styles.topButtons}>
-          <IconButton icon={<Chevron />} to={"/"}>
+          <IconButton icon={<Chevron />} to={"/"} isLink>
             Go Back
           </IconButton>
-          <BasicButton buttonType={"button2"}>Edit Feedback</BasicButton>
+          <FeedbackModal buttonType={"button2"} data={req}>
+            Edit Feedback
+          </FeedbackModal>
         </div>
         <SuggestionCard
           sugTitle={req.title}

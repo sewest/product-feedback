@@ -27,9 +27,8 @@ export default function AppShell() {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-
   return (
-    <header className={`${styles.appHeader} ${path.startsWith("/feedback") || path.startsWith("/roadmap") ? styles.hidden : ""}`}>
+    <header className={`${styles.appHeader} ${path !== "/" ? styles.hidden : ""}`}>
       <LogoBox isOpen={isOpen} setIsOpen={setIsOpen} />
       {windowWidth < 768 && (
         <div className={`${styles.drawer} ${isOpen && styles.drawerOpen}`}>
