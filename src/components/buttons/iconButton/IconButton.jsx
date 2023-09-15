@@ -11,11 +11,19 @@ import styles from "./iconButton.module.css";
  * @param {string} [props.to] - The URL to navigate to when the button is clicked.
  * @return {ReactElement} The rendered icon button.
  */
-export default function IconButton({ icon, children, classes, to }) {
+export default function IconButton({ icon, children, classes, to, isLink, onClick }) {
+  if (isLink) {
+    return (
+      <Link to={to} className={`${styles.iconButton} ${classes}`} onClick={onClick}>
+        {icon}
+        {children}
+      </Link>
+    );
+  }
+
   return (
-    <Link to={to} className={`${styles.iconButton} ${classes}`}>
-      {icon}
-      {children}
-    </Link>
+    <button className={`${styles.iconButton} ${classes}`} onClick={onClick}>
+      {icon} {children}
+    </button>
   );
 }
