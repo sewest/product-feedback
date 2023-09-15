@@ -11,6 +11,10 @@
   font-size: 0.8125rem;
   font-weight: 700;
   line-height: normal;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .buttonBase:hover {
@@ -31,6 +35,22 @@
 
 .button2:hover {
   background-color: #7c91f9;
+}
+
+.button3 {
+  background-color: #3a4374;
+}
+
+.button3:hover {
+  background-color: #656ea3;
+}
+
+.button4 {
+  background-color: #d73737;
+}
+
+.button4:hover {
+  background-color: #e98888;
 }
 
 /* A text only button */
