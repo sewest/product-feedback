@@ -1,7 +1,7 @@
 import Dropdown from "../dropdown/Dropdown";
 import styles from "./toolbar.module.css";
 import { ReactComponent as Bulb } from "../../assets/icons/iconBulb.svg";
-import BasicButton from "../buttons/basicButton/BasicButton";
+import FeedbackModal from "../feedbackModal/FeedbackModal";
 
 /**
  * Renders a toolbar component.
@@ -13,12 +13,13 @@ export default function Toolbar() {
     <menu className={styles.toolbar}>
       <div className={styles.headerContainer}>
         <Bulb />
-        <h2>6 Suggestions</h2>
+        <h2 className={styles.toolbarTitle}>6 Suggestions</h2>
       </div>
       <Dropdown />
-      <BasicButton buttonType={"button1"} style={{ marginLeft: "auto" }}>
+
+      <FeedbackModal buttonType={"button1"} style={{ marginLeft: "auto", justifySelf: "end" }}>
         + Add Feedback
-      </BasicButton>
+      </FeedbackModal>
     </menu>
   );
 }
