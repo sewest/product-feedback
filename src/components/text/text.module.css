@@ -1,0 +1,22 @@
+.text {
+  color: var(--text-dark);
+  font-family: var(--font-family);
+}
+
+/* 0.8125rem */
+.small {
+  font-size: var(--font-size-xxs);
+  font-weight: var(--font-weight-semi-bold);
+}
+
+/* 0.9375rem */
+.medium {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-regular);
+}
+
+/* 1rem */
+.large {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-regular);
+}

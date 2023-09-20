@@ -102,17 +102,6 @@ section[id="tabContent"] h2 {
   align-self: flex-start;
 }
 
-section[id="tabContent"] p {
-  align-self: flex-start;
-  color: #647196;
-  font-family: Jost;
-  font-size: 0.8125rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  width: 100%;
-}
-
 @media screen and (min-width: 768px) {
   .roadmapCard {
     width: 13.9375rem;

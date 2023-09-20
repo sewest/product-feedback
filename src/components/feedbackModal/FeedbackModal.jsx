@@ -6,6 +6,7 @@ import useWindowWidth from "../../hooks/useWindowWidth";
 import BasicButton from "../buttons/basicButton/BasicButton";
 import IconButton from "../buttons/iconButton/IconButton";
 import Title from "../title/Title";
+import Text from "../text/Text";
 import styles from "./feedbackModal.module.css";
 
 export default function FeedbackModal({ style, children, buttonType, data }) {
@@ -73,12 +74,12 @@ export default function FeedbackModal({ style, children, buttonType, data }) {
             </Title>
             <label htmlFor="feedbackTitle">
               Feedback Title
-              <p>Add a short, descriptive headline</p>
+              <Text size={windowWidth < 768 ? "sm" : "md"}>Add a short, descriptive headline</Text>
               <input type="text" id="feedbackTitle" className={styles.titleInput} required value={feedbackTitle} onChange={handleTitleChange} />
             </label>
             <label htmlFor="feedbackCategory">
               Category
-              <p>Choose a category htmlFor your feedback</p>
+              <Text size={windowWidth < 768 ? "sm" : "md"}>Choose a category htmlFor your feedback</Text>
               <select id="feedbackCategory" name="feedbackCategory" required className={styles.category} value={feedbackCategory} onChange={handleCategoryChange}>
                 <option>Bug</option>
                 <option>Feature</option>
@@ -86,7 +87,7 @@ export default function FeedbackModal({ style, children, buttonType, data }) {
             </label>
             <label htmlFor="feedbackDetail">
               Feedback Detail
-              <p>Include any specific comments on what should be improved, added, etc.</p>
+              <Text size={windowWidth < 768 ? "sm" : "md"}>Include any specific comments on what should be improved, added, etc.</Text>
               <textarea id="feedbackDetail" name="feedbackDetail" className={styles.feedbackDetailText} required value={feedbackDetail} onChange={handleDetailChange}></textarea>
             </label>
             <div className={styles.buttonContainer}>

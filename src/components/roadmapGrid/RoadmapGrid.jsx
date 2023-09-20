@@ -1,9 +1,12 @@
 import RoadmapCard from "../roadmapCard/RoadmapCard";
 import data from "../../assets/data/data.json";
+import useWindowWidth from "../../hooks/useWindowWidth";
 import Title from "../title/Title";
+import Text from "../text/Text";
 import styles from "./roadmapGrid.module.css";
 
 export default function RoadmapGrid() {
+  const windowWidth = useWindowWidth();
   const categories = [
     { id: "planned", label: "Planned" },
     { id: "in-progress", label: "In-Progress" },
@@ -16,12 +19,24 @@ export default function RoadmapGrid() {
     <div className={styles.roadmapGrid}>
       {categories.map((category) => (
         <section className={`${styles[category.id]} ${styles.roadmapSection}`}>
-          <Title order={3} color="dark" size="md" classes={styles.columnTitle}>
+          <Title order={3} color="dark" size={windowWidth < 1300 ? "sm" : "lg"} classes={styles.columnTitle}>
             {`${capitalizeStatus(category.id)} (${getDataByStatus(category.id).length})`}
           </Title>
-          {category.id === "in-progress" && <p>Features currently being developed</p>}
-          {category.id === "live" && <p>Released features</p>}
-          {category.id === "planned" && <p>Ideas prioritized for research</p>}
+          {category.id === "in-progress" && (
+            <Text size="sm" classes={styles.explainerText}>
+              Features currently being developed
+            </Text>
+          )}
+          {category.id === "live" && (
+            <Text size="sm" classes={styles.explainerText}>
+              Released features
+            </Text>
+          )}
+          {category.id === "planned" && (
+            <Text size="sm" classes={styles.explainerText}>
+              Ideas prioritized for research
+            </Text>
+          )}
           {getDataByStatus(category.id).map((item) => (
             <RoadmapCard key={item.id} data={item} />
           ))}

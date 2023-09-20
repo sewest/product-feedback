@@ -20,13 +20,9 @@
     width: calc(100% / 3);
   }
 
-  .roadmapSection p {
-    color: #647196;
-    font-family: Jost;
-    font-size: 0.875rem;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
+  /* Override the default text component size */
+  .explainerText {
+    font-size: var(--font-size-xs);
   }
 }
 
@@ -34,5 +30,10 @@
   .roadmapGrid {
     min-width: 69.375rem;
     gap: 2rem;
+  }
+
+  /* Override the default text component size */
+  .explainerText {
+    font-size: var(--font-size-md);
   }
 }

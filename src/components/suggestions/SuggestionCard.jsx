@@ -5,6 +5,7 @@ import useWindowWidth from "../../hooks/useWindowWidth";
 import UpvoteButton from "../buttons/upvoteButton/UpvoteButton";
 import Chip from "../../components/chip/Chip";
 import Title from "../title/Title";
+import Text from "../text/Text";
 import styles from "./suggestionCard.module.css";
 
 /**
@@ -32,7 +33,7 @@ export default function SuggestionCard({ sugTitle, sugDescription, sugCategory, 
           <Title order={2} color={"dark"} size={windowWidth < 768 ? "sm" : "lg"}>
             {sugTitle}
           </Title>
-          <p>{sugDescription}</p>
+          <Text size={windowWidth < 768 ? "sm" : "lg"}>{sugDescription}</Text>
           <Chip>{sugCategory}</Chip>
         </div>
         <div className={styles.buttonContainer}>

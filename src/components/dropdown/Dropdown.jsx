@@ -1,5 +1,7 @@
 import { useState, useRef } from "react";
 import { getSelectedIndex, handleOptionClick, handleOptionKeyDown, handleButtonKeyDown } from "./dropdownHelpers";
+import useWindowWidth from "../../hooks/useWindowWidth";
+import Text from "../text/Text";
 import styles from "./dropdown.module.css";
 
 /**
@@ -12,15 +14,16 @@ export default function Dropdown() {
   const [isOpen, setIsOpen] = useState(false);
   const startingIndex = getSelectedIndex(selected, items);
   const [selectedText, setSelectedText] = useState(items[startingIndex].text);
+  const windowWidth = useWindowWidth();
   const dropdownRef = useRef(null);
   const buttonRef = useRef(null);
 
   return (
     <>
       <div className={`${styles.customSelect} ${isOpen && styles.active}`}>
-        <p id="select-label" className={styles.selectLabel}>
+        <Text size={windowWidth < 768 ? "sm" : "md"} id="select-label" className={styles.selectLabel}>
           {label}
-        </p>
+        </Text>
         <button
           ref={buttonRef}
           className={`${styles.selectButton} select-button`}
