@@ -1,4 +1,4 @@
-import RoadmapCard from "../roadmapCard/RoadmapCard";
+import RoadmapCard from "../cards/roadmapCard/RoadmapCard";
 import data from "../../assets/data/data.json";
 import useWindowWidth from "../../hooks/useWindowWidth";
 import Title from "../title/Title";

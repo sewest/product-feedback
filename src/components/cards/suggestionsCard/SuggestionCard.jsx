@@ -1,11 +1,12 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { ReactComponent as Comments } from "../../assets/icons/iconComments.svg";
-import useWindowWidth from "../../hooks/useWindowWidth";
-import UpvoteButton from "../buttons/upvoteButton/UpvoteButton";
-import Chip from "../../components/chip/Chip";
-import Title from "../title/Title";
-import Text from "../text/Text";
+import { ReactComponent as Comments } from "../../../assets/icons/iconComments.svg";
+import useWindowWidth from "../../../hooks/useWindowWidth";
+import BaseCard from "../baseCard/BaseCard";
+import UpvoteButton from "../../buttons/upvoteButton/UpvoteButton";
+import Chip from "../../chip/Chip";
+import Title from "../../title/Title";
+import Text from "../../text/Text";
 import styles from "./suggestionCard.module.css";
 
 /**
@@ -24,7 +25,7 @@ export default function SuggestionCard({ sugTitle, sugDescription, sugCategory, 
 
   return (
     <Link to={`/feedback/${sugId}`} className={styles.suggestionCardLink}>
-      <article className={styles.suggestionCard}>
+      <BaseCard classes={styles.suggestionCard}>
         <div className={styles.outerButtonContainer}>
           <UpvoteButton count={sugVotes} />
         </div>
@@ -47,7 +48,7 @@ export default function SuggestionCard({ sugTitle, sugDescription, sugCategory, 
           <Comments />
           {sugComments + sugReplies || 0}
         </div>
-      </article>
+      </BaseCard>
     </Link>
   );
 }

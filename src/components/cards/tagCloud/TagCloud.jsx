@@ -1,4 +1,5 @@
 import data from "../../../assets/data/data.json";
+import BaseCard from "../baseCard/BaseCard";
 import Chip from "../../chip/Chip";
 import styles from "./tagCloud.module.css";
 
@@ -11,7 +12,7 @@ export default function TagCloud() {
   const uniqueCategories = new Set();
 
   return (
-    <div className={styles.tagCloud}>
+    <BaseCard classes={styles.tagCloud}>
       <Chip key="All">All</Chip>
       <Chip key="UI">UI</Chip>
       <Chip key="UX">UX</Chip>
@@ -22,6 +23,6 @@ export default function TagCloud() {
         }
         return null;
       })}
-    </div>
+    </BaseCard>
   );
 }

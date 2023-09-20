@@ -1,5 +1,5 @@
 import Toolbar from "../toolBar/ToolBar";
-import SuggestionCard from "../suggestions/SuggestionCard";
+import SuggestionCard from "../cards/suggestionsCard/SuggestionCard";
 import data from "../../assets/data/data.json";
 import { ReactComponent as Empty } from "../../assets/icons/iconEmpty.svg";
 import useWindowWidth from "../../hooks/useWindowWidth";

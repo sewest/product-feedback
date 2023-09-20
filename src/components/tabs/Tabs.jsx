@@ -1,5 +1,5 @@
 import { useState } from "react";
-import RoadmapCard from "../roadmapCard/RoadmapCard";
+import RoadmapCard from "../cards/roadmapCard/RoadmapCard";
 import Title from "../title/Title";
 import Text from "../text/Text";
 import data from "../../assets/data/data.json";

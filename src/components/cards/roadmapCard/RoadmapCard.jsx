@@ -1,9 +1,10 @@
-import Chip from "../chip/Chip";
-import { ReactComponent as CommentIcon } from "../../assets/icons/iconComments.svg";
-import UpvoteButton from "../buttons/upvoteButton/UpvoteButton";
-import useWindowWidth from "../../hooks/useWindowWidth";
-import Title from "../title/Title";
-import Text from "../text/Text";
+import { ReactComponent as CommentIcon } from "../../../assets/icons/iconComments.svg";
+import useWindowWidth from "../../../hooks/useWindowWidth";
+import BaseCard from "../baseCard/BaseCard";
+import UpvoteButton from "../../buttons/upvoteButton/UpvoteButton";
+import Chip from "../../chip/Chip";
+import Title from "../../title/Title";
+import Text from "../../text/Text";
 import styles from "./roadmapCard.module.css";
 
 export default function RoadmapList({ data }) {
@@ -13,7 +14,7 @@ export default function RoadmapList({ data }) {
   const capitalizedStatus = capitalizeStatus(status);
   console.log(status);
   return (
-    <article className={`${styles[status]} ${styles.roadmapCard}`}>
+    <BaseCard classes={`${styles[status]} ${styles.roadmapCard}`}>
       <div className={styles.statusContainer}>
         <div className={styles.statusDot}></div> {capitalizedStatus}
       </div>
@@ -31,7 +32,7 @@ export default function RoadmapList({ data }) {
           <CommentIcon /> {comments ? comments.length : 0}
         </div>
       </div>
-    </article>
+    </BaseCard>
   );
 }
 

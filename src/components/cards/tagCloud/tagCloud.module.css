@@ -1,14 +1,12 @@
 .tagCloud {
-  width: 13.9375rem;
-  height: 11.125rem;
-  overflow: scroll;
-  border-radius: 0.625rem;
-  background: #fff;
+  overflow-y: auto;
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
   padding: 1.5rem;
   align-content: flex-start;
+  width: 13.9375rem;
+  height: 11.125rem;
 }
 
 @media screen and (min-width: 1300px) {
