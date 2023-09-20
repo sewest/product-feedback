@@ -1,12 +1,7 @@
 .roadmapCard {
-  width: 100%;
-  height: fit-content;
-  border-radius: 0.625rem;
-  background: #fff;
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  padding: 1.5rem;
   align-items: flex-start;
 }
 

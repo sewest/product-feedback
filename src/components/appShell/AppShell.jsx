@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router";
 import LogoBox from "./logoBox/LogoBox";
-import RoadmapPreview from "./roadmapPreview/RoadmapPreview";
-import TagCloud from "./tagCloud/TagCloud";
+import RoadmapPreview from "../cards/roadmapPreview/RoadmapPreview";
+import TagCloud from "../cards/tagCloud/TagCloud";
 import styles from "./appShell.module.css";
 
 /**

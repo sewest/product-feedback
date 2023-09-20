@@ -1,4 +1,5 @@
 import { useState } from "react";
+import BaseCard from "../baseCard/BaseCard";
 import BasicButton from "../../buttons/basicButton/BasicButton";
 import Title from "../../title/Title";
 import Text from "../../text/Text";
@@ -24,7 +25,7 @@ export default function CommentCard({ imageSrc, alt, username, handle, comment, 
   const windowWidth = useWindowWidth();
 
   return (
-    <article className={`${styles.commentCard} ${classes}`}>
+    <BaseCard classes={`${styles.commentCard} ${classes}`}>
       <div className={styles.commentContainer}>
         <div className={styles.commentHeader}>
           <img src={getImgSrc(imageSrc)} alt={alt} />
@@ -51,7 +52,7 @@ export default function CommentCard({ imageSrc, alt, username, handle, comment, 
           Post Reply
         </BasicButton>
       </form>
-    </article>
+    </BaseCard>
   );
 }
 

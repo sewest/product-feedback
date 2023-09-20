@@ -1,5 +1,5 @@
-import CommentCard from "./commentCard/CommentCard";
-import SuggestionCard from "../suggestions/SuggestionCard";
+import CommentCard from "../cards/commentCard/CommentCard";
+import SuggestionCard from "../cards/suggestionsCard/SuggestionCard";
 import AddComment from "./addComment/AddComment";
 import IconButton from "../buttons/iconButton/IconButton";
 import Title from "../title/Title";

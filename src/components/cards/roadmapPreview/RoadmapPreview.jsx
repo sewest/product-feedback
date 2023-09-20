@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import BaseCard from "../baseCard/BaseCard";
 import Title from "../../title/Title";
 import styles from "./roadmapPreview.module.css";
 
@@ -9,7 +10,7 @@ import styles from "./roadmapPreview.module.css";
  */
 export default function RoadmapPreview() {
   return (
-    <section className={styles.roadmapPreview}>
+    <BaseCard classes={styles.roadmapPreview}>
       <table>
         <thead>
           <tr>
@@ -44,6 +45,6 @@ export default function RoadmapPreview() {
           </tr>
         </tbody>
       </table>
-    </section>
+    </BaseCard>
   );
 }
