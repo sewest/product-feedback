@@ -11,7 +11,7 @@
 
 @media screen and (min-width: 1300px) {
   .tagCloud {
-    width: 100%;
+    width: 15.9375rem;
     height: 10.375rem;
     flex-shrink: 0;
   }

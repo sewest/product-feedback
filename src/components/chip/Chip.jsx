@@ -8,6 +8,10 @@ import styles from "./chip.module.css";
  *
  * @return {ReactElement} The rendered Chip component.
  */
-export default function Chip({ children }) {
-  return <div className={styles.chip}>{children}</div>;
+export default function Chip({ children, onClick }) {
+  return (
+    <div className={styles.chip} onClick={onClick}>
+      {children}
+    </div>
+  );
 }

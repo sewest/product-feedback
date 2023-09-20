@@ -2,19 +2,18 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: radial-gradient(166.82% 166.82% at 103.9% -10.39%, #e84d70 0%, #a337f6 53.09%, #28a7ed 100%);
+  background: var(--logo-background);
   background-repeat: no-repeat;
   background-size: cover;
-  padding: 1rem 1.5rem;
+  padding: 0 1.5rem;
   height: 4.5rem;
   overflow: hidden;
   z-index: 3;
   position: relative;
 }
 
-/* Sets an overlay over the main content, but underneath the logobox and drawer */
 .overlay {
-  background-color: black;
+  background-color: var(--color-black);
   opacity: 0.5;
   width: 100vw;
   height: 100vh;
@@ -26,13 +25,13 @@
 
 .logo,
 .logoSub {
-  color: var(--color-white) !important; /* Override text styles */
+  color: var(--color-white);
 }
 
 .logo {
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-bold);
-  letter-spacing: -0.01169rem;
+  letter-spacing: var(--ls-logo-sm);
 }
 
 .logoSub {
@@ -57,7 +56,6 @@ img[alt="hamburger"] {
 
 @media screen and (min-width: 768px) {
   .logoBox {
-    background: radial-gradient(166.82% 166.82% at 103.9% -10.39%, #e84d70 0%, #a337f6 53.09%, #28a7ed 100%);
     padding: 1.5rem;
     align-items: flex-end;
     width: 13.9375rem;
@@ -67,7 +65,7 @@ img[alt="hamburger"] {
 
   .logo {
     font-size: var(--font-size-xl);
-    letter-spacing: -0.01563rem;
+    letter-spacing: var(--ls-md);
   }
 
   .logoBox p {
@@ -82,9 +80,8 @@ img[alt="hamburger"] {
 
 @media screen and (min-width: 1300px) {
   .logoBox {
-    background-image: radial-gradient(circle at 264.945px -14.2296px, #e84d70, #a337f6 53.09%, #28a7ed);
-    width: 100%;
+    background-image: var(--logo-background);
+    width: 15.9375rem;
     height: 8.5625rem;
-    flex-shrink: 0;
   }
 }

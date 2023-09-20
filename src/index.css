@@ -37,6 +37,8 @@ body {
   --color-off-white-1: #f7f8fd;
   --color-off-white-2: #f2f4ff;
 
+  --color-black: #000000;
+
   --color-blue: #4661e6;
   --color-sky-blue: #62bcfa;
   --color-faded-blue: #647196;
@@ -47,6 +49,8 @@ body {
   --color-purple: #ad1fea;
 
   --color-coral: #f49f85;
+
+  --logo-background: radial-gradient(166.82% 166.82% at 103.9% -10.39%, #e84d70 0%, #a337f6 53.09%, #28a7ed 100%);
 
   /*** Typography ***/
 
@@ -72,4 +76,5 @@ body {
   --ls-sm: -0.01213rem;
   --ls-md: -0.01563rem;
   --ls-lg: -0.02081rem;
+  --ls-logo-sm: -0.01169rem;
 }

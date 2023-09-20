@@ -8,7 +8,7 @@ import styles from "./roadmapPreview.module.css";
  *
  * @return {JSX.Element} The rendered roadmap preview.
  */
-export default function RoadmapPreview() {
+export default function RoadmapPreview({ setIsOpen }) {
   return (
     <BaseCard classes={styles.roadmapPreview}>
       <table>
@@ -20,7 +20,9 @@ export default function RoadmapPreview() {
               </Title>
             </th>
             <th>
-              <Link to="/roadmap">View</Link>
+              <Link to="/roadmap" onClick={() => setIsOpen(false)}>
+                View
+              </Link>
             </th>
           </tr>
         </thead>

@@ -17,7 +17,9 @@ export default function LogoBox({ isOpen, setIsOpen }) {
 
   return (
     <>
+      {/* display an overlay over the content when the drawer is open  */}
       {isOpen && <div className={styles.overlay} onClick={() => setIsOpen(false)}></div>}
+
       <div className={styles.logoBox}>
         <div>
           <Title order={1} classes={styles.logo}>
