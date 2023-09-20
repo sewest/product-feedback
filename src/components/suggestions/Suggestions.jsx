@@ -5,6 +5,7 @@ import { ReactComponent as Empty } from "../../assets/icons/iconEmpty.svg";
 import useWindowWidth from "../../hooks/useWindowWidth";
 import BasicButton from "../buttons/basicButton/BasicButton";
 import Title from "../title/Title";
+import Text from "../text/Text";
 import styles from "./suggestions.module.css";
 
 /**
@@ -14,8 +15,10 @@ import styles from "./suggestions.module.css";
  */
 export default function Suggestions() {
   const windowWidth = useWindowWidth();
-  // const reqs = data.productRequests;
-  const reqs = [];
+
+  //Swap these to test data vs no data
+  const reqs = data.productRequests;
+  // const reqs = [];
 
   return (
     <section className={styles.suggestions}>
@@ -47,7 +50,7 @@ export default function Suggestions() {
           <Title order={3} color="dark" size={windowWidth < 768 ? "lg" : "xxl"}>
             There is no feedback yet.
           </Title>
-          <p>Got a suggestion? Found a bug that needs to be squashed? We love hearing about new ideas to improve our app.</p>
+          <Text size={windowWidth < 768 ? "sm" : "lg"}>Got a suggestion? Found a bug that needs to be squashed? We love hearing about new ideas to improve our app.</Text>
           <BasicButton buttonType={"button1"}>+ Add Feedback</BasicButton>
         </section>
       )}

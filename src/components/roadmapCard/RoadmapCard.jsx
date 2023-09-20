@@ -3,6 +3,7 @@ import { ReactComponent as CommentIcon } from "../../assets/icons/iconComments.s
 import UpvoteButton from "../buttons/upvoteButton/UpvoteButton";
 import useWindowWidth from "../../hooks/useWindowWidth";
 import Title from "../title/Title";
+import Text from "../text/Text";
 import styles from "./roadmapCard.module.css";
 
 export default function RoadmapList({ data }) {
@@ -20,7 +21,7 @@ export default function RoadmapList({ data }) {
         <Title order={4} size={windowWidth < 1300 ? "sm" : "lg"} color="dark">
           {title}
         </Title>
-        <p>{description}</p>
+        <Text size={windowWidth < 1300 ? "sm" : "lg"}>{description}</Text>
         <Chip>{category}</Chip>
       </div>
 

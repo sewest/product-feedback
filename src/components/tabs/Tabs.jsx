@@ -1,6 +1,7 @@
 import { useState } from "react";
 import RoadmapCard from "../roadmapCard/RoadmapCard";
 import Title from "../title/Title";
+import Text from "../text/Text";
 import data from "../../assets/data/data.json";
 import styles from "./tabs.module.css";
 
@@ -32,9 +33,9 @@ export default function Tabs() {
           <Title order={3} color="dark" size="lg">
             {`${capitalizeStatus(activeTab)} (${filteredData.length})`}
           </Title>
-          {activeTab === "in-progress" && <p>Features currently being developed</p>}
-          {activeTab === "live" && <p>Released features</p>}
-          {activeTab === "planned" && <p>Ideas prioritized for research</p>}
+          {activeTab === "in-progress" && <Text size="sm">Features currently being developed</Text>}
+          {activeTab === "live" && <Text size="sm">Released features</Text>}
+          {activeTab === "planned" && <Text size="sm">Ideas prioritized for research</Text>}
           {filteredData.map((item) => (
             <RoadmapCard key={item.id} data={item} />
           ))}

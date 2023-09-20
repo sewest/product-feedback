@@ -1,6 +1,8 @@
 import iconClose from "../../../assets/images/logoBox/iconClose.svg";
 import hamburger from "../../../assets/images/logoBox/iconHamburger.svg";
+import useWindowWidth from "../../../hooks/useWindowWidth";
 import Title from "../../title/Title";
+import Text from "../../text/Text";
 import styles from "./logoBox.module.css";
 
 /**
@@ -11,6 +13,8 @@ import styles from "./logoBox.module.css";
  * @return {JSX.Element} The rendered logo box component.
  */
 export default function LogoBox({ isOpen, setIsOpen }) {
+  const windowWidth = useWindowWidth();
+
   return (
     <>
       {isOpen && <div className={styles.overlay} onClick={() => setIsOpen(false)}></div>}
@@ -19,7 +23,9 @@ export default function LogoBox({ isOpen, setIsOpen }) {
           <Title order={1} classes={styles.logo}>
             Frontend Mentor
           </Title>
-          <p>Feedback Board</p>
+          <Text size={windowWidth < 768 ? "sm" : "md"} classes={styles.logoSub}>
+            Feedback Board
+          </Text>
         </div>
 
         <img className={isOpen ? "" : styles.hidden} src={iconClose} alt="close" onClick={() => setIsOpen(false)} />

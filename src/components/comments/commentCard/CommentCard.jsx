@@ -1,6 +1,7 @@
 import { useState } from "react";
 import BasicButton from "../../buttons/basicButton/BasicButton";
 import Title from "../../title/Title";
+import Text from "../../text/Text";
 import useWindowWidth from "../../../hooks/useWindowWidth";
 import styles from "./commentCard.module.css";
 
@@ -31,7 +32,9 @@ export default function CommentCard({ imageSrc, alt, username, handle, comment, 
             <Title order={3} color="dark" size={windowWidth < 768 ? "sm" : "md"}>
               {username}
             </Title>
-            <p>@{handle}</p>
+            <Text size="sm" classes={styles.handle}>
+              @{handle}
+            </Text>
           </div>
         </div>
 
@@ -39,9 +42,9 @@ export default function CommentCard({ imageSrc, alt, username, handle, comment, 
           {isHidden ? "Reply" : "Cancel"}
         </BasicButton>
       </div>
-      <p className={`${replyingTo && styles.replyText} ${styles.comment}`}>
+      <Text size={windowWidth < 768 ? "sm" : "md"} classes={`${replyingTo && styles.replyText} ${styles.comment}`}>
         <span className={`${replyingTo || styles.hidden} ${styles.replyingTo}`}>@{replyingTo}</span> {comment}
-      </p>
+      </Text>
       <form className={`${styles.reply} ${isHidden && styles.hidden}`} onSubmit={(e) => handleSubmit(e, value)}>
         <textarea id="comment" name="comment" maxLength={250} value={value} onChange={(e) => handleChange(e, setValue)} placeholder="Type your comment here"></textarea>
         <BasicButton classes={styles.outerButton} buttonType={"button1"}>

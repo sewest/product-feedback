@@ -68,12 +68,8 @@
 }
 
 .feedbackContainer form p {
-  color: #647196;
-  font-family: Jost;
-  font-size: 0.8125rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
+  font-weight: var(--font-weight-regular);
+  margin-bottom: 1rem;
 }
 
 .titleInput,
