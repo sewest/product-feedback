@@ -1,0 +1,38 @@
+.title {
+  font-weight: var(--font-weight-bold);
+  font-family: var(--font-family);
+  line-height: normal;
+}
+
+.light {
+  color: var(--text-light);
+}
+
+.dark {
+  color: var(--text-dark);
+}
+
+.sm {
+  font-size: var(--font-size-xxs); /* 0.8125rem */
+  letter-spacing: var(--ls-xs);
+}
+
+.md {
+  font-size: var(--font-size-xs); /* 0.875rem */
+  letter-spacing: var(--ls-sm);
+}
+
+.lg {
+  font-size: var(--font-size-lg); /* 1.125rem */
+  letter-spacing: var(--ls-md);
+}
+
+.xl {
+  font-size: var(--font-size-xl); /* 1.25rem */
+  letter-spacing: var(--ls-md);
+}
+
+.xxl {
+  font-size: var(--font-size-xxl); /* 1.5rem */
+  letter-spacing: var(--ls-lg);
+}

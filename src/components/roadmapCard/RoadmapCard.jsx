@@ -1,10 +1,13 @@
 import Chip from "../chip/Chip";
-import UpvoteButton from "../buttons/upvoteButton/UpvoteButton";
 import { ReactComponent as CommentIcon } from "../../assets/icons/iconComments.svg";
+import UpvoteButton from "../buttons/upvoteButton/UpvoteButton";
+import useWindowWidth from "../../hooks/useWindowWidth";
+import Title from "../title/Title";
 import styles from "./roadmapCard.module.css";
 
 export default function RoadmapList({ data }) {
   const { category, title, description, upvotes, comments, status } = data;
+  const windowWidth = useWindowWidth();
 
   const capitalizedStatus = capitalizeStatus(status);
   console.log(status);
@@ -14,7 +17,9 @@ export default function RoadmapList({ data }) {
         <div className={styles.statusDot}></div> {capitalizedStatus}
       </div>
       <div className={styles.roadmapText}>
-        <h2>{title}</h2>
+        <Title order={4} size={windowWidth < 1300 ? "sm" : "lg"} color="dark">
+          {title}
+        </Title>
         <p>{description}</p>
         <Chip>{category}</Chip>
       </div>

@@ -10,13 +10,6 @@
   }
 
   .columnTitle {
-    color: #3a4374;
-    font-family: Jost;
-    font-size: 0.875rem;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-    letter-spacing: -0.01213rem;
     margin-top: 2rem;
   }
 
@@ -34,7 +27,6 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    /* margin-bottom: 1rem; */
   }
 }
 

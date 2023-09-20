@@ -1,11 +1,8 @@
 import { useState } from "react";
 import BasicButton from "../../buttons/basicButton/BasicButton";
+import Title from "../../title/Title";
+import useWindowWidth from "../../../hooks/useWindowWidth";
 import styles from "./commentCard.module.css";
-
-const getImgSrc = (name) => {
-  const path = new URL(`../../../assets/images/user-images/${name}`, import.meta.url).href;
-  return path;
-};
 
 /**
  * Renders a comment card component.
@@ -23,6 +20,7 @@ const getImgSrc = (name) => {
 export default function CommentCard({ imageSrc, alt, username, handle, comment, classes, replyingTo }) {
   const [value, setValue] = useState("");
   const [isHidden, setIsHidden] = useState(true);
+  const windowWidth = useWindowWidth();
 
   return (
     <article className={`${styles.commentCard} ${classes}`}>
@@ -30,7 +28,9 @@ export default function CommentCard({ imageSrc, alt, username, handle, comment, 
         <div className={styles.commentHeader}>
           <img src={getImgSrc(imageSrc)} alt={alt} />
           <div className={styles.commentText}>
-            <h3>{username}</h3>
+            <Title order={3} color="dark" size={windowWidth < 768 ? "sm" : "md"}>
+              {username}
+            </Title>
             <p>@{handle}</p>
           </div>
         </div>
@@ -85,4 +85,9 @@ const handleReply = (setValue, setIsHidden, isHidden) => {
     setValue("");
   }
   setIsHidden(!isHidden);
+};
+
+const getImgSrc = (name) => {
+  const path = new URL(`../../../assets/images/user-images/${name}`, import.meta.url).href;
+  return path;
 };

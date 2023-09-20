@@ -1,7 +1,10 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { ReactComponent as Comments } from "../../assets/icons/iconComments.svg";
+import useWindowWidth from "../../hooks/useWindowWidth";
 import UpvoteButton from "../buttons/upvoteButton/UpvoteButton";
 import Chip from "../../components/chip/Chip";
-import { ReactComponent as Comments } from "../../assets/icons/iconComments.svg";
+import Title from "../title/Title";
 import styles from "./suggestionCard.module.css";
 
 /**
@@ -15,6 +18,9 @@ import styles from "./suggestionCard.module.css";
  * @return {ReactElement} The rendered suggestion card component.
  */
 export default function SuggestionCard({ sugTitle, sugDescription, sugCategory, sugVotes, sugComments, sugId, sugReplies }) {
+  const [width, setWidth] = useState(window.innerWidth);
+  const windowWidth = useWindowWidth();
+
   return (
     <Link to={`/feedback/${sugId}`} className={styles.suggestionCardLink}>
       <article className={styles.suggestionCard}>
@@ -23,7 +29,9 @@ export default function SuggestionCard({ sugTitle, sugDescription, sugCategory, 
         </div>
 
         <div className={styles.cardHeader}>
-          <h2>{sugTitle}</h2>
+          <Title order={2} color={"dark"} size={windowWidth < 768 ? "sm" : "lg"}>
+            {sugTitle}
+          </Title>
           <p>{sugDescription}</p>
           <Chip>{sugCategory}</Chip>
         </div>

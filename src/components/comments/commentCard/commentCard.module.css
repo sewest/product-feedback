@@ -25,13 +25,7 @@
 }
 
 .commentText h3 {
-  color: #3a4374;
-  font-family: Jost;
-  font-size: 0.8125rem;
-  font-style: normal;
-  font-weight: 700;
   line-height: normal;
-  letter-spacing: -0.01131rem;
 }
 
 .commentText p {
@@ -104,10 +98,10 @@
     gap: 2rem;
   }
 
-  .commentText h3 {
+  /* .commentText h3 {
     font-size: 0.875rem;
     letter-spacing: -0.01213rem;
-  }
+  } */
 
   .commentText p {
     font-size: 0.875rem;

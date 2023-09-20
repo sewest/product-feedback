@@ -2,7 +2,9 @@ import Toolbar from "../toolBar/ToolBar";
 import SuggestionCard from "../suggestions/SuggestionCard";
 import data from "../../assets/data/data.json";
 import { ReactComponent as Empty } from "../../assets/icons/iconEmpty.svg";
+import useWindowWidth from "../../hooks/useWindowWidth";
 import BasicButton from "../buttons/basicButton/BasicButton";
+import Title from "../title/Title";
 import styles from "./suggestions.module.css";
 
 /**
@@ -11,7 +13,9 @@ import styles from "./suggestions.module.css";
  * @return {JSX.Element} The rendered Suggestions component.
  */
 export default function Suggestions() {
-  const reqs = data.productRequests;
+  const windowWidth = useWindowWidth();
+  // const reqs = data.productRequests;
+  const reqs = [];
 
   return (
     <section className={styles.suggestions}>
@@ -40,7 +44,9 @@ export default function Suggestions() {
       {reqs.length === 0 && (
         <section className={styles.emptySection}>
           <Empty />
-          <h2>There is no feedback yet.</h2>
+          <Title order={3} color="dark" size={windowWidth < 768 ? "lg" : "xxl"}>
+            There is no feedback yet.
+          </Title>
           <p>Got a suggestion? Found a bug that needs to be squashed? We love hearing about new ideas to improve our app.</p>
           <BasicButton buttonType={"button1"}>+ Add Feedback</BasicButton>
         </section>

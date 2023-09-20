@@ -1,6 +1,7 @@
 import { useState } from "react";
-import styles from "./addComment.module.css";
 import BasicButton from "../../buttons/basicButton/BasicButton";
+import Title from "../../title/Title";
+import styles from "./addComment.module.css";
 
 /**
  * Renders a form for adding a comment.
@@ -13,7 +14,9 @@ export default function AddComment() {
 
   return (
     <form className={styles.addCommentForm} onSubmit={handleSubmit}>
-      <h3>Add Comment</h3>
+      <Title order={2} size="lg" color="dark">
+        Add Comment
+      </Title>
       <label htmlFor="comment" hidden>
         Add a comment
       </label>

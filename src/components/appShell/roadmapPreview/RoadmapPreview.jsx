@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Title from "../../title/Title";
 import styles from "./roadmapPreview.module.css";
 
 /**
@@ -12,7 +13,11 @@ export default function RoadmapPreview() {
       <table>
         <thead>
           <tr>
-            <th>Roadmap</th>
+            <th>
+              <Title order={2} size="lg" color="dark">
+                Roadmap
+              </Title>
+            </th>
             <th>
               <Link to="/roadmap">View</Link>
             </th>
