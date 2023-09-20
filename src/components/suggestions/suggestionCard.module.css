@@ -34,16 +34,6 @@
   align-items: flex-start;
 }
 
-/* They the title */
-.suggestionCard h2 {
-  color: var(--color-dark-blue-2);
-  font-family: Jost;
-  font-size: 0.8125rem;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-  letter-spacing: -0.01131rem;
-}
 /* Style the short description */
 .suggestionCard p {
   color: var(--color-faded-blue);
@@ -86,11 +76,6 @@
     padding: 1.75rem 2rem;
     justify-content: flex-start;
     gap: 2.5rem;
-  }
-
-  .suggestionCard h2 {
-    font-size: 1.125rem;
-    letter-spacing: -0.015625rem;
   }
 
   .suggestionCard p {

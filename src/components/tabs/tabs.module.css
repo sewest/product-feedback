@@ -71,6 +71,7 @@ section[role="tabpanel"] {
   gap: 1rem;
   background-color: #f7f8fd;
   padding: 1.5rem;
+  align-items: flex-start;
 }
 
 .hidden {

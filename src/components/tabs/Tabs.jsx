@@ -1,5 +1,6 @@
 import { useState } from "react";
 import RoadmapCard from "../roadmapCard/RoadmapCard";
+import Title from "../title/Title";
 import data from "../../assets/data/data.json";
 import styles from "./tabs.module.css";
 
@@ -28,7 +29,9 @@ export default function Tabs() {
       </nav>
       <div id="content" aria-live="polite" role="region">
         <section id="tabContent" role="tabpanel">
-          <h2> {`${capitalizeStatus(activeTab)} (${filteredData.length})`}</h2>
+          <Title order={3} color="dark" size="lg">
+            {`${capitalizeStatus(activeTab)} (${filteredData.length})`}
+          </Title>
           {activeTab === "in-progress" && <p>Features currently being developed</p>}
           {activeTab === "live" && <p>Released features</p>}
           {activeTab === "planned" && <p>Ideas prioritized for research</p>}

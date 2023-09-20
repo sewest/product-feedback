@@ -2,8 +2,10 @@ import { useEffect, useState, useRef } from "react";
 import { ReactComponent as Chevron } from "../../assets/icons/iconArrowLeft.svg";
 import { ReactComponent as FeedbackPlus } from "../../assets/icons/iconFeedbackCircle.svg";
 import { ReactComponent as EditFeedback } from "../../assets/icons/iconEditFeedback.svg";
+import useWindowWidth from "../../hooks/useWindowWidth";
 import BasicButton from "../buttons/basicButton/BasicButton";
 import IconButton from "../buttons/iconButton/IconButton";
+import Title from "../title/Title";
 import styles from "./feedbackModal.module.css";
 
 export default function FeedbackModal({ style, children, buttonType, data }) {
@@ -11,6 +13,7 @@ export default function FeedbackModal({ style, children, buttonType, data }) {
   const [feedbackTitle, setFeedbackTitle] = useState("");
   const [feedbackCategory, setFeedbackCategory] = useState("");
   const [feedbackDetail, setFeedbackDetail] = useState("");
+  const windowWidth = useWindowWidth();
   const modalRef = useRef(null);
   const bodyRef = useRef(null);
 
@@ -65,7 +68,9 @@ export default function FeedbackModal({ style, children, buttonType, data }) {
           </IconButton>
           <form onSubmit={handleSubmit}>
             {data ? <EditFeedback className={styles.feedbackIcon} /> : <FeedbackPlus className={styles.feedbackIcon} />}
-            <h2>{data ? `Editing '${data.title}'` : "Create New Feedback"}</h2>
+            <Title order={2} size={windowWidth < 768 ? "lg" : "xxl"} color="dark">
+              {data ? `Editing '${data.title}'` : "Create New Feedback"}
+            </Title>
             <label htmlFor="feedbackTitle">
               Feedback Title
               <p>Add a short, descriptive headline</p>

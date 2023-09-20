@@ -2,6 +2,7 @@ import Dropdown from "../dropdown/Dropdown";
 import styles from "./toolbar.module.css";
 import { ReactComponent as Bulb } from "../../assets/icons/iconBulb.svg";
 import FeedbackModal from "../feedbackModal/FeedbackModal";
+import Title from "../title/Title";
 
 /**
  * Renders a toolbar component.
@@ -13,7 +14,9 @@ export default function Toolbar() {
     <menu className={styles.toolbar}>
       <div className={styles.headerContainer}>
         <Bulb />
-        <h2 className={styles.toolbarTitle}>6 Suggestions</h2>
+        <Title order={2} size="lg" color="light">
+          FIX ME Suggestions
+        </Title>
       </div>
       <Dropdown />
 

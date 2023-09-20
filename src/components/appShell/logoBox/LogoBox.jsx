@@ -1,5 +1,6 @@
 import iconClose from "../../../assets/images/logoBox/iconClose.svg";
 import hamburger from "../../../assets/images/logoBox/iconHamburger.svg";
+import Title from "../../title/Title";
 import styles from "./logoBox.module.css";
 
 /**
@@ -15,7 +16,9 @@ export default function LogoBox({ isOpen, setIsOpen }) {
       {isOpen && <div className={styles.overlay} onClick={() => setIsOpen(false)}></div>}
       <div className={styles.logoBox}>
         <div>
-          <div className={styles.logo}>Frontend Mentor</div>
+          <Title order={1} classes={styles.logo}>
+            Frontend Mentor
+          </Title>
           <p>Feedback Board</p>
         </div>
 

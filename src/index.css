@@ -27,21 +27,33 @@ body {
   height: 100vh;
 }
 
+/* Theming */
 :root {
-  /* Colors */
-  --color-purple: #ad1fea;
+  /*** Colors ***/
+  --text-light: #ffffff; /* same as color-white */
+  --text-dark: #3a4374; /* same as color-dark-blue-2 */
+
+  --color-white: #ffffff;
+  --color-off-white-1: #f7f8fd;
+  --color-off-white-2: #f2f4ff;
+
   --color-blue: #4661e6;
-  --color-lavender: #cfd7ff;
   --color-sky-blue: #62bcfa;
   --color-faded-blue: #647196;
   --color-dark-blue-1: #373f68;
   --color-dark-blue-2: #3a4374;
-  --color-white: #ffffff;
-  --color-off-white-1: #f7f8fd;
-  --color-off-white-2: #f2f4ff;
+
+  --color-lavender: #cfd7ff;
+  --color-purple: #ad1fea;
+
   --color-coral: #f49f85;
 
-  /* Typography */
+  /*** Typography ***/
+
+  /* Font families */
+  --font-family: "Jost", sans-serif;
+
+  /* Font sizes */
   --font-size-xxs: 0.8125rem;
   --font-size-xs: 0.875rem;
   --font-size-sm: 0.9375rem;
@@ -54,4 +66,10 @@ body {
   --font-weight-medium: 500;
   --font-weight-semi-bold: 600;
   --font-weight-bold: 700;
+
+  /* Letter spacing */
+  --ls-xs: -0.01131rem;
+  --ls-sm: -0.01213rem;
+  --ls-md: -0.01563rem;
+  --ls-lg: -0.02081rem;
 }

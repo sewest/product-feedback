@@ -2,7 +2,7 @@ import CommentCard from "./commentCard/CommentCard";
 import SuggestionCard from "../suggestions/SuggestionCard";
 import AddComment from "./addComment/AddComment";
 import IconButton from "../buttons/iconButton/IconButton";
-import BasicButton from "../buttons/basicButton/BasicButton";
+import Title from "../title/Title";
 import { ReactComponent as Chevron } from "../../assets/icons/iconArrowLeft.svg";
 import FeedbackModal from "../feedbackModal/FeedbackModal";
 import styles from "./commentsMain.module.css";
@@ -45,7 +45,9 @@ export default function CommentsMain({ data }) {
       </section>
 
       <section className={styles.commentsSection}>
-        <h2>{getCommentLength(comments)}</h2>
+        <Title order={2} size="lg" color="dark">
+          {getCommentLength(comments)}
+        </Title>
         <ul>
           {comments &&
             comments.length > 0 &&
