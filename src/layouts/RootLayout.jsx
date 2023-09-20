@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import AppShell from "../components/appShell/AppShell";
+import AppHeader from "../components/appHeader/AppHeader";
 import styles from "./rootLayout.module.css";
 
 /**
@@ -10,7 +10,7 @@ import styles from "./rootLayout.module.css";
 export default function RootLayout() {
   return (
     <div className={styles.rootContainer}>
-      <AppShell />
+      <AppHeader />
       <main>
         <Outlet />
       </main>
