@@ -12,9 +12,11 @@ import styles from "./iconButton.module.css";
  * @return {ReactElement} The rendered icon button.
  */
 export default function IconButton({ icon, children, classes, to, isLink, onClick }) {
+  const combinedClasses = `${styles.iconButton} ${classes}`;
+
   if (isLink) {
     return (
-      <Link to={to} className={`${styles.iconButton} ${classes}`} onClick={onClick}>
+      <Link to={to} className={combinedClasses} onClick={onClick}>
         {icon}
         {children}
       </Link>
