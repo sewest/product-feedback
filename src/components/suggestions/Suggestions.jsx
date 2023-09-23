@@ -1,6 +1,6 @@
+import { useAppState } from "../../context/AppContext";
 import Toolbar from "../toolBar/ToolBar";
 import SuggestionCard from "../cards/suggestionsCard/SuggestionCard";
-import data from "../../assets/data/data.json";
 import { ReactComponent as Empty } from "../../assets/icons/iconEmpty.svg";
 import useWindowWidth from "../../hooks/useWindowWidth";
 import BasicButton from "../buttons/basicButton/BasicButton";
@@ -14,11 +14,9 @@ import styles from "./suggestions.module.css";
  * @return {JSX.Element} The rendered Suggestions component.
  */
 export default function Suggestions() {
+  const state = useAppState();
+  const reqs = state.productRequests;
   const windowWidth = useWindowWidth();
-
-  //Swap these to test data vs no data
-  const reqs = data.productRequests;
-  // const reqs = [];
 
   return (
     <section className={styles.suggestions}>

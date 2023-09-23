@@ -1,11 +1,12 @@
 import { useState } from "react";
+import { useAppState } from "../../context/AppContext";
 import RoadmapCard from "../cards/roadmapCard/RoadmapCard";
 import Title from "../title/Title";
 import Text from "../text/Text";
-import data from "../../assets/data/data.json";
 import styles from "./tabs.module.css";
 
 export default function Tabs() {
+  const state = useAppState();
   const [activeTab, setActiveTab] = useState("planned");
   const tabs = [
     { id: "planned", label: "Planned" },
@@ -17,14 +18,14 @@ export default function Tabs() {
     setActiveTab(tabId);
   };
 
-  const filteredData = getDataByStatus(activeTab);
+  const filteredData = getDataByStatus(state, activeTab);
 
   return (
     <>
       <nav role="tablist">
         {tabs.map((tab) => (
           <a key={tab.id} href={`#${tab.id}`} aria-controls="tabContent" id={`${tab.id}Tab`} role="tab" onClick={() => handleClick(tab.id)} className={`${activeTab === tab.id ? styles.activeTab : styles.inactiveTab} ${styles[activeTab]}`}>
-            {tab.label} ({getDataByStatus(tab.id).length})
+            {tab.label} ({getDataByStatus(state, tab.id).length})
           </a>
         ))}
       </nav>
@@ -45,8 +46,9 @@ export default function Tabs() {
   );
 }
 
-const getDataByStatus = (status) => {
-  return data.productRequests.filter((item) => item.status === status);
+//TODO: This is duplicated. Move these to context file
+const getDataByStatus = (state, status) => {
+  return state.productRequests.filter((item) => item.status === status);
 };
 
 function capitalizeStatus(status) {

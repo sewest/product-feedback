@@ -1,7 +1,7 @@
 import { useLocation } from "react-router-dom";
+import { useAppState } from "../../context/AppContext";
 import { ReactComponent as Bulb } from "../../assets/icons/iconBulb.svg";
 import { ReactComponent as Chevron } from "../../assets/icons/iconArrowLeft.svg";
-import data from "../../assets/data/data.json";
 import FeedbackModal from "../feedbackModal/FeedbackModal";
 import IconButton from "../buttons/iconButton/IconButton";
 import Title from "../title/Title";
@@ -14,6 +14,7 @@ import styles from "./toolbar.module.css";
  * @return {ReactElement} The rendered toolbar.
  */
 export default function Toolbar() {
+  const state = useAppState();
   const path = useLocation().pathname;
 
   return (
@@ -22,7 +23,7 @@ export default function Toolbar() {
       <div className={`${path !== "/" ? styles.hidden : ""} ${styles.headerContainer}`}>
         <Bulb />
         <Title order={2} size="lg" color="light">
-          {getSuggestionCount(data.productRequests)} Suggestions
+          {getSuggestionCount(state.productRequests)} Suggestions
         </Title>
       </div>
       {/* Show Roadmap on roadmap path */}

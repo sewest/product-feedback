@@ -12,7 +12,6 @@ export default function RoadmapList({ data }) {
   const windowWidth = useWindowWidth();
 
   const capitalizedStatus = capitalizeStatus(status);
-  console.log(status);
   return (
     <BaseCard classes={`${styles[status]} ${styles.roadmapCard}`}>
       <div className={styles.statusContainer}>

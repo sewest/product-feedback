@@ -1,4 +1,4 @@
-import data from "../../../assets/data/data.json";
+import { useAppState } from "../../../context/AppContext";
 import BaseCard from "../baseCard/BaseCard";
 import Chip from "../../chip/Chip";
 import styles from "./tagCloud.module.css";
@@ -9,6 +9,8 @@ import styles from "./tagCloud.module.css";
  * @return {JSX.Element} The rendered tag cloud component.
  */
 export default function TagCloud({ setIsOpen }) {
+  const state = useAppState();
+
   //We only want to show each category once
   const uniqueCategories = new Set();
 
@@ -26,7 +28,7 @@ export default function TagCloud({ setIsOpen }) {
       </Chip>
 
       {/* Generate the chip categores from the JSON data  */}
-      {data.productRequests.map((item) => {
+      {state.productRequests.map((item) => {
         if (!uniqueCategories.has(item.category)) {
           uniqueCategories.add(item.category);
           return (
