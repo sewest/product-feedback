@@ -1,5 +1,5 @@
 /* Style the outer most container menu */
-.toolbar {
+.mainToolbar {
   width: 100%;
   height: 3.5rem;
   background-color: var(--color-dark-blue-1);
@@ -9,14 +9,41 @@
   padding: 0.5rem 1.25rem;
 }
 
+/* Style the outer most container menu when the page is roadmap*/
+.roadmapToolbar {
+  width: 100%;
+  height: 6.25rem;
+  background-color: var(--color-dark-blue-1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1.25rem;
+}
+
+.backButton {
+  color: var(--text-light);
+}
+
+.backButton svg path {
+  stroke: var(--text-light);
+}
+
+.roadmapHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  align-items: flex-start;
+}
+
 /* Style the container for the bulb iconand title */
 .headerContainer {
   display: none;
 }
 
+/* Styles for the title text (either suggestions or roadmap) */
 .toolbarTitle {
   color: var(--color-white);
-  font-family: Jost;
+  font-family: var(--font-family);
   font-size: 18px;
   font-style: normal;
   font-weight: 700;
@@ -27,32 +54,46 @@
 
 /* On very small screens, need to reduce the horizontal padding a bit */
 @media screen and (max-width: 340px) {
-  .toolbar {
+  .mainToolbar {
     padding: 0.5rem 0.5rem;
   }
 }
 
 @media screen and (min-width: 768px) {
-  .toolbar {
+  .mainToolbar {
     border-radius: 0.625rem;
     width: 43.0625rem;
     height: 4.5rem;
-    flex-shrink: 0;
     gap: 2.375rem;
     justify-content: flex-start;
   }
 
   .headerContainer {
-    width: "fit-content";
+    width: fit-content;
     display: flex;
     justify-content: flex-start;
     gap: 1rem;
     align-items: center;
   }
+
+  .roadmapToolbar {
+    width: 43.0625rem;
+    height: 7.0625rem;
+    border-radius: 0.625rem;
+    background: #373f68;
+  }
 }
 
 @media screen and (min-width: 1300px) {
-  .toolbar {
-    width: 100%;
+  .mainToolbar {
+    width: 51.5625rem;
   }
+
+  .roadmapToolbar {
+    width: 69.375rem;
+  }
+}
+
+.hidden {
+  display: none;
 }
