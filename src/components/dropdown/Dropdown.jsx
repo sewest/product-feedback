@@ -9,7 +9,7 @@ import styles from "./dropdown.module.css";
  *
  * @return {JSX.Element} The rendered dropdown component.
  */
-export default function Dropdown() {
+export default function Dropdown({ classes }) {
   const { label, selected, items } = data;
   const [isOpen, setIsOpen] = useState(false);
   const startingIndex = getSelectedIndex(selected, items);
@@ -20,7 +20,7 @@ export default function Dropdown() {
 
   return (
     <>
-      <div className={`${styles.customSelect} ${isOpen && styles.active}`}>
+      <div className={`${styles.customSelect} ${isOpen && styles.active} ${classes}`}>
         <Text size={windowWidth < 768 ? "sm" : "md"} id="select-label" className={styles.selectLabel}>
           {label}
         </Text>

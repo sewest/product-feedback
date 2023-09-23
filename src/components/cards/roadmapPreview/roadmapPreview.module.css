@@ -15,6 +15,11 @@
   margin-bottom: 1.5rem;
 }
 
+/* Grab the table header witht the link and align the link to the right */
+th:has(> Link) {
+  text-align: end;
+}
+
 /* Style the 'view' link */
 .roadmapPreview a {
   color: var(--color-blue);
