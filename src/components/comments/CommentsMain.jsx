@@ -16,8 +16,8 @@ export default function CommentsMain() {
    * @return {JSX.Element} The main comments section.
    */
   const { feedbackId } = useParams();
-  const state = useAppState();
-  const req = state.productRequests.find((req) => req.id === +feedbackId);
+  const { getRequestById } = useAppState();
+  const req = getRequestById(+feedbackId);
   const comments = req.comments || [];
 
   return (

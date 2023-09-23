@@ -9,7 +9,7 @@ import styles from "./tagCloud.module.css";
  * @return {JSX.Element} The rendered tag cloud component.
  */
 export default function TagCloud({ setIsOpen }) {
-  const state = useAppState();
+  const { state } = useAppState();
 
   //We only want to show each category once
   const uniqueCategories = new Set();

@@ -14,7 +14,7 @@ import styles from "./suggestions.module.css";
  * @return {JSX.Element} The rendered Suggestions component.
  */
 export default function Suggestions() {
-  const state = useAppState();
+  const { state } = useAppState();
   const reqs = state.productRequests;
   const windowWidth = useWindowWidth();
 
@@ -55,6 +55,8 @@ export default function Suggestions() {
     </section>
   );
 }
+
+//Need the getter here instead of in context because it's used while we map over the data
 
 /**
  * Calculates the total number of replies in the given comments array.
