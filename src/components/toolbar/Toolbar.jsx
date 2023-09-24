@@ -8,33 +8,40 @@ import Title from "../title/Title";
 import Dropdown from "../dropdown/Dropdown";
 import styles from "./toolbar.module.css";
 
-/**
- * Renders a toolbar component.
- *
- * @return {ReactElement} The rendered toolbar.
- */
 export default function Toolbar() {
+  // Get the count of suggestions from the app state
   const { getSuggestionCount } = useAppState();
   const count = getSuggestionCount();
+
+  // Get the current path from the location
   const path = useLocation().pathname;
 
   return (
+    // Render a menu element with different styles based on the current path
     <menu className={`${path === "/" ? styles.mainToolbar : styles.roadmapToolbar}`}>
+      {/* Render a container div for the header */}
       <div className={`${path !== "/" ? styles.hidden : ""} ${styles.headerContainer}`}>
+        {/* Render the Bulb icon */}
         <Bulb />
+        {/* Render the title with the count of suggestions */}
         <Title order={2} size="lg" color="light">
           {count} Suggestions
         </Title>
       </div>
+      {/* Render a container div for the roadmap header */}
       <div className={`${path !== "/roadmap" ? styles.hidden : ""} ${styles.roadmapHeader}`}>
+        {/* Render an IconButton with the Chevron icon, linking to the homepage */}
         <IconButton icon={<Chevron />} to={"/"} isLink classes={styles.backButton}>
           Go Back
         </IconButton>
+        {/* Render the title "Roadmap" */}
         <Title order={2} size="lg" color="light">
           Roadmap
         </Title>
       </div>
+      {/* Render the Dropdown component with different styles based on the current path */}
       <Dropdown classes={path === "/roadmap" ? styles.hidden : ""} />
+      {/* Render the FeedbackModal component with a buttonType prop and inline styles */}
       <FeedbackModal buttonType={"button1"} style={{ marginLeft: "auto", justifySelf: "end" }}>
         + Add Feedback
       </FeedbackModal>

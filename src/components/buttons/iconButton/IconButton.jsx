@@ -1,19 +1,13 @@
+// Import the necessary modules and styles
 import { Link } from "react-router-dom";
 import styles from "./iconButton.module.css";
 
-/**
- * Renders an icon button with optional text or children as content.
- *
- * @param {Object} props - The properties of the icon button.
- * @param {ReactElement} props.icon - The icon element to be rendered.
- * @param {ReactNode} [props.children] - The optional text or children to be rendered.
- * @param {string} [props.classes] - The additional classes to be applied to the icon button.
- * @param {string} [props.to] - The URL to navigate to when the button is clicked.
- * @return {ReactElement} The rendered icon button.
- */
+// Define and export the IconButton component
 export default function IconButton({ icon, children, classes, to, isLink, onClick }) {
+  // Combine the default styles with the additional classes passed as props
   const combinedClasses = `${styles.iconButton} ${classes}`;
 
+  // If the component is a link, render a Link component
   if (isLink) {
     return (
       <Link to={to} className={combinedClasses} onClick={onClick}>
@@ -23,6 +17,7 @@ export default function IconButton({ icon, children, classes, to, isLink, onClic
     );
   }
 
+  // If the component is a button, render a button element
   return (
     <button className={`${styles.iconButton} ${classes}`} onClick={onClick}>
       {icon} {children}

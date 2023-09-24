@@ -1,14 +1,13 @@
 import { Link } from "react-router-dom";
+import { useAppState } from "../../../context/AppContext";
 import BaseCard from "../baseCard/BaseCard";
 import Title from "../../title/Title";
 import styles from "./roadmapPreview.module.css";
 
-/**
- * Renders a preview table with data about the roadmap.
- *
- * @return {JSX.Element} The rendered roadmap preview.
- */
+// Generate the roadmap preview card that is part of the appheader
 export default function RoadmapPreview({ setIsOpen }) {
+  const { getDataByStatus } = useAppState();
+
   return (
     <BaseCard classes={styles.roadmapPreview}>
       <table>
@@ -31,19 +30,19 @@ export default function RoadmapPreview({ setIsOpen }) {
             <td>
               <span className={styles.coralSpan}></span>Planned
             </td>
-            <td>2</td>
+            <td>{getDataByStatus("planned").length}</td>
           </tr>
           <tr>
             <td>
               <span className={styles.purpleSpan}></span>In-Progress
             </td>
-            <td>3</td>
+            <td>{getDataByStatus("in-progress").length}</td>
           </tr>
           <tr>
             <td>
               <span className={styles.blueSpan}></span>Live
             </td>
-            <td>1</td>
+            <td>{getDataByStatus("live").length}</td>
           </tr>
         </tbody>
       </table>

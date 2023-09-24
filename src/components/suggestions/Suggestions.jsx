@@ -8,17 +8,13 @@ import Title from "../title/Title";
 import Text from "../text/Text";
 import styles from "./suggestions.module.css";
 
-/**
- * Renders the Suggestions component.
- *
- * @return {JSX.Element} The rendered Suggestions component.
- */
 export default function Suggestions() {
   const { state } = useAppState();
   const reqs = state.productRequests;
   const windowWidth = useWindowWidth();
 
   return (
+    // If we have suggestions, render a list of them in suggestion cards
     <section className={styles.suggestions}>
       <Toolbar />
       {reqs.length > 0 && (
@@ -42,6 +38,7 @@ export default function Suggestions() {
           )}
         </ul>
       )}
+      {/* If there are no suggestions, render an empty section stating so */}
       {reqs.length === 0 && (
         <section className={styles.emptySection}>
           <Empty />
@@ -57,13 +54,6 @@ export default function Suggestions() {
 }
 
 //Need the getter here instead of in context because it's used while we map over the data
-
-/**
- * Calculates the total number of replies in the given comments array.
- *
- * @param {Array} comments - An array of comments.
- * @return {number} The total number of replies.
- */
 const getTotalRepliesCount = (comments) => {
   return comments.reduce((count, comment) => count + (comment.replies ? comment.replies.length : 0), 0);
 };

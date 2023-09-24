@@ -7,12 +7,13 @@ import Title from "../../title/Title";
 import Text from "../../text/Text";
 import styles from "./roadmapCard.module.css";
 
-export default function RoadmapList({ data }) {
+// Rendering the RoadmapCard component that is the content for roadmap tabs and grid
+export default function RoadmapCard({ data }) {
   const { category, title, description, upvotes, comments, status } = data;
   const windowWidth = useWindowWidth();
 
   const capitalizedStatus = capitalizeStatus(status);
-  console.log(status);
+
   return (
     <BaseCard classes={`${styles[status]} ${styles.roadmapCard}`}>
       <div className={styles.statusContainer}>
@@ -36,6 +37,7 @@ export default function RoadmapList({ data }) {
   );
 }
 
+// Slightly different logic that that of the useCapitalizeFirstLetter hook. Only used here
 function capitalizeStatus(status) {
   return status
     .split("-")

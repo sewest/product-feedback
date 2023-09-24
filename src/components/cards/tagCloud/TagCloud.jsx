@@ -1,15 +1,12 @@
 import { useAppState } from "../../../context/AppContext";
+import useCapitalizeFirstLetter from "../../../hooks/useCapitalizeFirstLetter";
 import BaseCard from "../baseCard/BaseCard";
 import Chip from "../../chip/Chip";
 import styles from "./tagCloud.module.css";
 
-/**
- * Renders a box with a list of category tags.
- *
- * @return {JSX.Element} The rendered tag cloud component.
- */
 export default function TagCloud({ setIsOpen }) {
   const { state } = useAppState();
+  const capitalizeFirstLetter = useCapitalizeFirstLetter();
 
   //We only want to show each category once
   const uniqueCategories = new Set();
@@ -33,8 +30,7 @@ export default function TagCloud({ setIsOpen }) {
           uniqueCategories.add(item.category);
           return (
             <Chip key={item.id} onClick={() => setIsOpen(false)}>
-              {/* Capitalize the first letter  */}
-              {item.category.charAt(0).toUpperCase() + item.category.slice(1)}
+              {capitalizeFirstLetter(item.category)}
             </Chip>
           );
         }

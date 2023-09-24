@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 
+// Listen for window resize and return the window width
 export default function useWindowWidth() {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 

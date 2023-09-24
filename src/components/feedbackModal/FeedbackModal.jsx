@@ -9,7 +9,9 @@ import Title from "../title/Title";
 import Text from "../text/Text";
 import styles from "./feedbackModal.module.css";
 
-export default function FeedbackModal({ style, children, buttonType, data }) {
+// This component represents a feedback modal
+export default function FeedbackModal({ children, buttonType, data }) {
+  // State variables
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [feedbackTitle, setFeedbackTitle] = useState("");
   const [feedbackCategory, setFeedbackCategory] = useState("");
@@ -18,8 +20,12 @@ export default function FeedbackModal({ style, children, buttonType, data }) {
   const modalRef = useRef(null);
   const bodyRef = useRef(null);
 
+  // Effect hook to update state variables when 'data' changes
   useEffect(() => {
+    // Get references to the modal and body elements
     bodyRef.current = document.getElementsByTagName("body")[0];
+
+    // Set the state variables based on the 'data' prop
     if (data) {
       setFeedbackTitle(data.title);
       setFeedbackCategory(data.category);
@@ -27,60 +33,74 @@ export default function FeedbackModal({ style, children, buttonType, data }) {
     }
   }, [data]);
 
+  // Function to handle opening and closing the modal
   const handleModal = () => {
     const modal = modalRef.current;
     const body = bodyRef.current;
 
+    // Toggle the 'isModalOpen' state variable
+    setIsModalOpen(!isModalOpen);
+
+    // Open or close the modal based on the 'isModalOpen' state variable
     if (!isModalOpen) {
-      setIsModalOpen(true);
       modal.showModal();
       body.style.overflow = "hidden";
     } else {
-      setIsModalOpen(false);
       modal.close();
       body.style.overflow = "auto";
     }
   };
 
-  const handleTitleChange = (e) => {
-    setFeedbackTitle(e.target.value);
+  // Function to handle input change events
+  const handleInputChange = (e) => {
+    // Update the corresponding state variable based on the input's ID
+    switch (e.target.id) {
+      case "feedbackTitle":
+        setFeedbackTitle(e.target.value);
+        break;
+      case "feedbackCategory":
+        setFeedbackCategory(e.target.value);
+        break;
+      case "feedbackDetail":
+        setFeedbackDetail(e.target.value);
+        break;
+      default:
+        break;
+    }
   };
 
-  const handleCategoryChange = (e) => {
-    setFeedbackCategory(e.target.value);
-  };
-
-  const handleDetailChange = (e) => {
-    setFeedbackDetail(e.target.value);
-  };
-
+  // Function to handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
     // Handle form submission logic here
   };
 
+  // JSX markup for the feedback modal
   return (
     <>
-      {/* Feedback modal */}
       <dialog className={styles.feedbackModal} ref={modalRef}>
         <div className={styles.feedbackContainer}>
           <IconButton icon={<Chevron />} onClick={handleModal}>
             Go Back
           </IconButton>
           <form onSubmit={handleSubmit}>
+            {/* Conditionally render the appropriate feedback icon */}
             {data ? <EditFeedback className={styles.feedbackIcon} /> : <FeedbackPlus className={styles.feedbackIcon} />}
             <Title order={2} size={windowWidth < 768 ? "lg" : "xxl"} color="dark">
+              {/* Conditionally render the title based on the presence of 'data' */}
               {data ? `Editing '${data.title}'` : "Create New Feedback"}
             </Title>
             <label htmlFor="feedbackTitle">
               Feedback Title
               <Text size={windowWidth < 768 ? "sm" : "md"}>Add a short, descriptive headline</Text>
-              <input type="text" id="feedbackTitle" className={styles.titleInput} required value={feedbackTitle} onChange={handleTitleChange} />
+              {/* Input field for the feedback title */}
+              <input type="text" id="feedbackTitle" className={styles.titleInput} required value={feedbackTitle} onChange={handleInputChange} />
             </label>
             <label htmlFor="feedbackCategory">
               Category
               <Text size={windowWidth < 768 ? "sm" : "md"}>Choose a category htmlFor your feedback</Text>
-              <select id="feedbackCategory" name="feedbackCategory" required className={styles.category} value={feedbackCategory} onChange={handleCategoryChange}>
+              {/* Select field for the feedback category */}
+              <select id="feedbackCategory" name="feedbackCategory" required className={styles.category} value={feedbackCategory} onChange={handleInputChange}>
                 <option>Bug</option>
                 <option>Feature</option>
               </select>
@@ -88,15 +108,20 @@ export default function FeedbackModal({ style, children, buttonType, data }) {
             <label htmlFor="feedbackDetail">
               Feedback Detail
               <Text size={windowWidth < 768 ? "sm" : "md"}>Include any specific comments on what should be improved, added, etc.</Text>
-              <textarea id="feedbackDetail" name="feedbackDetail" className={styles.feedbackDetailText} required value={feedbackDetail} onChange={handleDetailChange}></textarea>
+              {/* Textarea field for the feedback detail */}
+              <textarea id="feedbackDetail" name="feedbackDetail" className={styles.feedbackDetailText} required value={feedbackDetail} onChange={handleInputChange}></textarea>
             </label>
             <div className={styles.buttonContainer}>
+              {/* Button to submit the form */}
               <BasicButton buttonType="button1" type="submit">
+                {/* Conditionally render the button label based on the presence of 'data' */}
                 {data ? "Save Changes" : "Add Feedback"}
               </BasicButton>
+              {/* Button to cancel the modal */}
               <BasicButton buttonType="button3" onClick={handleModal}>
                 Cancel
               </BasicButton>
+              {/* Button to delete the feedback */}
               <BasicButton buttonType="button4" style={{ marginRight: "auto" }}>
                 Delete
               </BasicButton>
@@ -105,8 +130,8 @@ export default function FeedbackModal({ style, children, buttonType, data }) {
         </div>
       </dialog>
 
-      {/* Button to open modal */}
-      <BasicButton style={style} buttonType={buttonType} onClick={handleModal}>
+      {/* Button to open the modal */}
+      <BasicButton buttonType={buttonType} onClick={handleModal}>
         {children}
       </BasicButton>
     </>

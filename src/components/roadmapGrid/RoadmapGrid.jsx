@@ -1,28 +1,31 @@
 import { useAppState } from "../../context/AppContext";
 import RoadmapCard from "../cards/roadmapCard/RoadmapCard";
 import useWindowWidth from "../../hooks/useWindowWidth";
+import useCapitalizeFirstLetter from "../../hooks/useCapitalizeFirstLetter";
 import Title from "../title/Title";
 import Text from "../text/Text";
 import styles from "./roadmapGrid.module.css";
 
 export default function RoadmapGrid() {
+  // Access the getDataByStatus function from the useAppState hook
   const { getDataByStatus } = useAppState();
-  const windowWidth = useWindowWidth();
-  const categories = [
-    { id: "planned", label: "Planned" },
-    { id: "in-progress", label: "In-Progress" },
-    { id: "live", label: "Live" },
-  ];
 
-  //   const filteredData = getDataByStatus(activeTab);
+  // Access the windowWidth value from the useWindowWidth hook
+  const windowWidth = useWindowWidth();
+
+  // Access the capitalizeFirstLetter function from the useCapitalizeFirstLetter hook
+  const capitalizeFirstLetter = useCapitalizeFirstLetter();
 
   return (
     <div className={styles.roadmapGrid}>
       {categories.map((category) => (
         <section key={category.id} className={`${styles[category.id]} ${styles.roadmapSection}`}>
           <Title order={3} color="dark" size={windowWidth < 1300 ? "sm" : "lg"} classes={styles.columnTitle}>
-            {`${capitalizeStatus(category.id)} (${getDataByStatus(category.id).length})`}
+            {/* Display the category label with the number of items */}
+            {`${capitalizeFirstLetter(category.id)} (${getDataByStatus(category.id).length})`}
           </Title>
+
+          {/* Display additional text for specific categories */}
           {category.id === "in-progress" && (
             <Text size="sm" classes={styles.explainerText}>
               Features currently being developed
@@ -38,6 +41,8 @@ export default function RoadmapGrid() {
               Ideas prioritized for research
             </Text>
           )}
+
+          {/* Render RoadmapCard components for each item in the category */}
           {getDataByStatus(category.id).map((item) => (
             <RoadmapCard key={item.id} data={item} />
           ))}
@@ -47,6 +52,9 @@ export default function RoadmapGrid() {
   );
 }
 
-function capitalizeStatus(status) {
-  return status.charAt(0).toUpperCase() + status.slice(1);
-}
+// Define an array of category objects
+const categories = [
+  { id: "planned", label: "Planned" },
+  { id: "in-progress", label: "In-Progress" },
+  { id: "live", label: "Live" },
+];
