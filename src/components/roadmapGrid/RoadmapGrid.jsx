@@ -1,11 +1,12 @@
+import { useAppState } from "../../context/AppContext";
 import RoadmapCard from "../cards/roadmapCard/RoadmapCard";
-import data from "../../assets/data/data.json";
 import useWindowWidth from "../../hooks/useWindowWidth";
 import Title from "../title/Title";
 import Text from "../text/Text";
 import styles from "./roadmapGrid.module.css";
 
 export default function RoadmapGrid() {
+  const { getDataByStatus } = useAppState();
   const windowWidth = useWindowWidth();
   const categories = [
     { id: "planned", label: "Planned" },
@@ -18,7 +19,7 @@ export default function RoadmapGrid() {
   return (
     <div className={styles.roadmapGrid}>
       {categories.map((category) => (
-        <section className={`${styles[category.id]} ${styles.roadmapSection}`}>
+        <section key={category.id} className={`${styles[category.id]} ${styles.roadmapSection}`}>
           <Title order={3} color="dark" size={windowWidth < 1300 ? "sm" : "lg"} classes={styles.columnTitle}>
             {`${capitalizeStatus(category.id)} (${getDataByStatus(category.id).length})`}
           </Title>
@@ -49,7 +50,3 @@ export default function RoadmapGrid() {
 function capitalizeStatus(status) {
   return status.charAt(0).toUpperCase() + status.slice(1);
 }
-
-const getDataByStatus = (status) => {
-  return data.productRequests.filter((item) => item.status === status);
-};

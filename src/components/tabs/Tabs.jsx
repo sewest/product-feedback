@@ -1,11 +1,12 @@
 import { useState } from "react";
+import { useAppState } from "../../context/AppContext";
 import RoadmapCard from "../cards/roadmapCard/RoadmapCard";
 import Title from "../title/Title";
 import Text from "../text/Text";
-import data from "../../assets/data/data.json";
 import styles from "./tabs.module.css";
 
 export default function Tabs() {
+  const { state, getDataByStatus } = useAppState();
   const [activeTab, setActiveTab] = useState("planned");
   const tabs = [
     { id: "planned", label: "Planned" },
@@ -45,9 +46,7 @@ export default function Tabs() {
   );
 }
 
-const getDataByStatus = (status) => {
-  return data.productRequests.filter((item) => item.status === status);
-};
+//TODO: This is duplicated. Move these to context file
 
 function capitalizeStatus(status) {
   return status.charAt(0).toUpperCase() + status.slice(1);
