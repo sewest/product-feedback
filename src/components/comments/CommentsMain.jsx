@@ -1,3 +1,5 @@
+import { useAppState } from "../../context/AppContext";
+import { useParams } from "react-router-dom";
 import CommentCard from "../cards/commentCard/CommentCard";
 import SuggestionCard from "../cards/suggestionsCard/SuggestionCard";
 import AddComment from "./addComment/AddComment";
@@ -7,20 +9,16 @@ import { ReactComponent as Chevron } from "../../assets/icons/iconArrowLeft.svg"
 import FeedbackModal from "../feedbackModal/FeedbackModal";
 import styles from "./commentsMain.module.css";
 
-/**
- * Renders the main comments section of the page.
- *
- * @param {Object} data - The data object containing the request and comments.
- * @param {Object} data.req - The request object.
- * @param {string} data.req.title - The title of the request.
- * @param {string} data.req.description - The description of the request.
- * @param {string} data.req.category - The category of the request.
- * @param {number} data.req.upvotes - The number of upvotes on the request.
- * @param {Array} data.comments - The array of comments.
- * @return {JSX.Element} - The JSX element representing the main comments section.
- */
-export default function CommentsMain({ data }) {
-  const { req, comments } = data;
+export default function CommentsMain() {
+  /**
+   * Renders the main comments section of the application.
+   *
+   * @return {JSX.Element} The main comments section.
+   */
+  const { feedbackId } = useParams();
+  const { getRequestById } = useAppState();
+  const req = getRequestById(+feedbackId);
+  const comments = req.comments || [];
 
   return (
     <div className={styles.commentsMainContainer}>
