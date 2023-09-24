@@ -1,46 +1,35 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useLocation } from "react-router";
-import LogoBox from "./logoBox/LogoBox";
+import useWindowWidth from "../../hooks/useWindowWidth";
+import LogoBox from "../logoBox/LogoBox";
 import RoadmapPreview from "../cards/roadmapPreview/RoadmapPreview";
 import TagCloud from "../cards/tagCloud/TagCloud";
 import styles from "./appHeader.module.css";
 
-/**
- * Renders the application shell that contains the logo box, tag cloud, and roadmap.
- *
- * @return {JSX.Element} The JSX element representing the application shell.
- */
+// Exporting the component as the default export
 export default function AppShell() {
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  // Using the useState hook to create a state variable isOpen and its updater function setIsOpen
   const [isOpen, setIsOpen] = useState(false);
-  const path = useLocation().pathname;
 
-  //On smaller screens, we need the tag cloud and roadmap in a drawer, so track the window width
-  useEffect(() => {
-    function handleResize() {
-      setWindowWidth(window.innerWidth);
-    }
+  // Using the useLocation hook from the react-router library to get the current location
+  const currentPath = useLocation().pathname;
 
-    window.addEventListener("resize", handleResize);
+  // Using the useWindowWidth custom hook to get the current window width
+  const windowWidth = useWindowWidth();
 
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
+  // Returning the JSX element representing the header of the app
   return (
-    <header className={`${styles.appHeader} ${path !== "/" ? styles.hidden : ""}`}>
+    <header className={`${styles.appHeader} ${currentPath !== "/" ? styles.hidden : ""}`}>
+      {/* Rendering the LogoBox component and passing the state variables isOpen and setIsOpen as props */}
       <LogoBox isOpen={isOpen} setIsOpen={setIsOpen} />
-
-      {/* The drawer for smaller screens */}
+      {/*  If windowWidth is less than 768 pixels, render them inside a drawer element */}
       {windowWidth < 768 && (
         <div className={`${styles.drawer} ${isOpen && styles.drawerOpen}`}>
           <TagCloud setIsOpen={setIsOpen} />
           <RoadmapPreview setIsOpen={setIsOpen} />
         </div>
       )}
-
-      {/* On larger screens, just display them as is */}
+      {/* If windowWidth is greater than or equal to 768 pixels, render them directly */}
       {windowWidth >= 768 && (
         <>
           <TagCloud setIsOpen={setIsOpen} />

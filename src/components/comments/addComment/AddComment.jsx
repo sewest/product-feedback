@@ -5,11 +5,6 @@ import Title from "../../title/Title";
 import Text from "../../text/Text";
 import styles from "./addComment.module.css";
 
-/**
- * Renders a form for adding a comment.
- *
- * @return {JSX.Element} The rendered form component.
- */
 export default function AddComment() {
   const [characters, setCharacters] = useState(0);
   const [value, setValue] = useState("");
@@ -34,23 +29,11 @@ export default function AddComment() {
   );
 }
 
-/**
- * Updates the character count and value based on the input event.
- *
- * @param {Event} e - The input event.
- * @param {function} setCharacters - The function to update the character count.
- * @param {function} setValue - The function to update the input value.
- */
 const handleChange = (e, setCharacters, setValue) => {
   setCharacters(e.target.value.length);
   setValue(e.target.value);
 };
 
-/**
- * Handles the form submission event and displays an alert message.
- *
- * @param {Event} e - The form submission event.
- */
 const handleSubmit = (e) => {
   e.preventDefault();
   alert("Adding comment");

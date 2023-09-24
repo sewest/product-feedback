@@ -1,6 +1,7 @@
 import styles from "./title.module.css";
 
 export default function Title({ order, size, color, children, classes }) {
+  //Return the proper header based on the order.
   switch (order) {
     case 1:
       return <h1 className={`${styles.title} ${styles[size]} ${styles[color]} ${classes}`}>{children}</h1>;
