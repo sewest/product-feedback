@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { useAppDispatch } from "../../context/AppContext";
 import { getSelectedIndex, handleOptionClick, handleOptionKeyDown, handleButtonKeyDown, data } from "./dropdownHelpers";
 import useWindowWidth from "../../hooks/useWindowWidth";
 import Text from "../text/Text";
@@ -9,9 +10,18 @@ export default function Dropdown({ classes }) {
   const [isOpen, setIsOpen] = useState(false);
   const startingIndex = getSelectedIndex(selected, items);
   const [selectedText, setSelectedText] = useState(items[startingIndex].text);
+  const dispatch = useAppDispatch();
   const windowWidth = useWindowWidth();
   const dropdownRef = useRef(null);
   const buttonRef = useRef(null);
+
+  useEffect(() => {
+    dispatch({
+      type: "SET_SORT_ORDER",
+      payload: selectedText,
+    });
+  }, [selectedText]);
+
   return (
     <>
       <div className={`${styles.customSelect} ${isOpen && styles.active} ${classes}`}>
