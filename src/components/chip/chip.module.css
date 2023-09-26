@@ -22,3 +22,8 @@
   background: var(--color-blue);
   color: var(--color-white);
 }
+
+.activeChip:hover {
+  cursor: pointer;
+  background: var(--color-dark-blue-1);
+}

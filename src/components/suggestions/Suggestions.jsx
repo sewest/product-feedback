@@ -9,9 +9,9 @@ import Text from "../text/Text";
 import styles from "./suggestions.module.css";
 
 export default function Suggestions() {
-  const { getSortedSuggestions } = useAppState();
+  const { getFilteredSuggestions } = useAppState();
 
-  const reqs = getSortedSuggestions();
+  const reqs = getFilteredSuggestions();
   const windowWidth = useWindowWidth();
 
   return (
