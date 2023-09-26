@@ -16,6 +16,8 @@ export function AppProvider({ children }) {
         return { ...state, sortOrder: action.payload };
       case "LOAD_STATE":
         return { ...action.payload, sortOrder: state.sortOrder };
+      case "SET_CATEGORY":
+        return { ...state, category: action.payload };
       default:
         return state;
     }
@@ -24,6 +26,7 @@ export function AppProvider({ children }) {
   const initialData = {
     ...data,
     sortOrder: "Most Upvotes",
+    category: null,
   };
 
   // Use the useReducer hook to manage the state of the app
@@ -91,6 +94,25 @@ export function AppProvider({ children }) {
     }
   }, [state.productRequests, state.sortOrder]);
 
+  const getFilteredSuggestions = useCallback((category) => {
+    const sortedSuggestions = getSortedSuggestions();
+
+    switch (state.category) {
+      case "UI":
+        return sortedSuggestions.filter((item) => item.category === "ui");
+      case "UX":
+        return sortedSuggestions.filter((item) => item.category === "ux");
+      case "Feature":
+        return sortedSuggestions.filter((item) => item.category === "feature");
+      case "Bug":
+        return sortedSuggestions.filter((item) => item.category === "bug");
+      case "Enhancement":
+        return sortedSuggestions.filter((item) => item.category === "enhancement");
+      default:
+        return sortedSuggestions;
+    }
+  });
+
   // Save the state to local storage whenever it changes
   useEffect(() => {
     localStorage.setItem("state", JSON.stringify(state));
@@ -107,13 +129,8 @@ export function AppProvider({ children }) {
     }
   }, []);
 
-  // Provide the state and the helper functions to the child components
-  const loadAppState = useCallback(() => {
-    dispatch({ type: "LOAD_STATE", payload: loadedData });
-  }, [loadedData]);
-
   return (
-    <AppContext.Provider value={{ state, getSuggestionCount, getDataByStatus, getRequestById, getSortedSuggestions, loadAppState }}>
+    <AppContext.Provider value={{ state, getSuggestionCount, getDataByStatus, getRequestById, getFilteredSuggestions }}>
       <AppDispatchContext.Provider value={dispatch}>{children}</AppDispatchContext.Provider>
     </AppContext.Provider>
   );

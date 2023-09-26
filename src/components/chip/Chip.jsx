@@ -2,10 +2,10 @@
 import styles from "./chip.module.css";
 
 // Define and export the Chip component
-export default function Chip({ children, onClick }) {
+export default function Chip({ children, onClick, isActive }) {
   // Return a div element with the class name from the styles object and an onClick event handler
   return (
-    <div className={styles.chip} onClick={onClick}>
+    <div className={`${styles.chip} ${isActive ? styles.activeChip : ""}`} onClick={onClick}>
       {children}
     </div>
   );
