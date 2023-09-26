@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer } from "react";
+import { createContext, useContext, useReducer, useEffect, useState, useCallback } from "react";
 import data from "../assets/data/data.json";
 
 // Create a context to hold the state of the app
@@ -9,27 +9,51 @@ const AppDispatchContext = createContext(null);
 
 // The main provider component that wraps the app
 export function AppProvider({ children }) {
+  // The reducer function for updating the state
+  function appReducer(state, action) {
+    switch (action.type) {
+      case "SET_SORT_ORDER":
+        return { ...state, sortOrder: action.payload };
+      case "LOAD_STATE":
+        return { ...action.payload, sortOrder: state.sortOrder };
+      default:
+        return state;
+    }
+  }
+
+  const initialData = {
+    ...data,
+    sortOrder: "Most Upvotes",
+  };
+
   // Use the useReducer hook to manage the state of the app
   const [state, dispatch] = useReducer(appReducer, initialData);
+  const [loadedData, setLoadedData] = useState(null);
 
   // Get the total number of suggestions from the state
-  const getSuggestionCount = () => {
+  const getSuggestionCount = useCallback(() => {
     return state.productRequests.filter((item) => item.status === "suggestion").length;
-  };
+  }, [state.productRequests]);
 
   // Get the data by status from the state
-  const getDataByStatus = (status) => {
-    return state.productRequests.filter((item) => item.status === status);
-  };
+  const getDataByStatus = useCallback(
+    (status) => {
+      return state.productRequests.filter((item) => item.status === status);
+    },
+    [state.productRequests]
+  );
 
   // Get a request by its ID from the state
-  const getRequestById = (id) => {
-    return state.productRequests.find((item) => item.id === id);
-  };
+  const getRequestById = useCallback(
+    (id) => {
+      return state.productRequests.find((item) => item.id === id);
+    },
+    [state.productRequests]
+  );
 
   //So this was a pain to figure out. Here's an article about the basics for a refresher:
   //https://www.javascripttutorial.net/javascript-array-sort/
-  const getSortedSuggestions = () => {
+  const getSortedSuggestions = useCallback(() => {
     // Switch statement to handle different sort orders
     switch (state.sortOrder) {
       case "Most Upvotes":
@@ -65,11 +89,31 @@ export function AppProvider({ children }) {
         // Default case: Sort the productRequests array in descending order based on upvotes count
         return state.productRequests.sort((a, b) => (b.upvotes || 0) - (a.upvotes || 0));
     }
-  };
+  }, [state.productRequests, state.sortOrder]);
+
+  // Save the state to local storage whenever it changes
+  useEffect(() => {
+    localStorage.setItem("state", JSON.stringify(state));
+  }, [state]);
+
+  // Load the state from local storage if it exists, otherwise load from data.json
+  useEffect(() => {
+    const savedState = localStorage.getItem("state");
+    if (savedState) {
+      const parsedState = JSON.parse(savedState);
+      dispatch({ type: "LOAD_STATE", payload: parsedState });
+    } else {
+      dispatch({ type: "LOAD_STATE", payload: initialData });
+    }
+  }, []);
 
   // Provide the state and the helper functions to the child components
+  const loadAppState = useCallback(() => {
+    dispatch({ type: "LOAD_STATE", payload: loadedData });
+  }, [loadedData]);
+
   return (
-    <AppContext.Provider value={{ state, getSuggestionCount, getDataByStatus, getRequestById, getSortedSuggestions }}>
+    <AppContext.Provider value={{ state, getSuggestionCount, getDataByStatus, getRequestById, getSortedSuggestions, loadAppState }}>
       <AppDispatchContext.Provider value={dispatch}>{children}</AppDispatchContext.Provider>
     </AppContext.Provider>
   );
@@ -84,18 +128,3 @@ export function useAppState() {
 export function useAppDispatch() {
   return useContext(AppDispatchContext);
 }
-
-// The reducer function for updating the state
-function appReducer(state, action) {
-  switch (action.type) {
-    case "SET_SORT_ORDER":
-      return { ...state, sortOrder: action.payload };
-    default:
-      return state;
-  }
-}
-
-const initialData = {
-  ...data,
-  sortOrder: "Most Upvotes",
-};
