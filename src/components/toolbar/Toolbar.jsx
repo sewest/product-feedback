@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useAppState } from "../../context/AppContext";
 import { ReactComponent as Bulb } from "../../assets/icons/iconBulb.svg";
 import { ReactComponent as Chevron } from "../../assets/icons/iconArrowLeft.svg";
@@ -11,10 +11,15 @@ import styles from "./toolbar.module.css";
 export default function Toolbar() {
   // Get the count of suggestions from the app state
   const { getSuggestionCount } = useAppState();
+  const navigate = useNavigate();
   const count = getSuggestionCount();
 
   // Get the current path from the location
   const path = useLocation().pathname;
+
+  const handleClick = () => {
+    navigate(-1);
+  };
 
   return (
     // Render a menu element with different styles based on the current path
@@ -31,7 +36,7 @@ export default function Toolbar() {
       {/* Render a container div for the roadmap header */}
       <div className={`${path !== "/roadmap" ? styles.hidden : ""} ${styles.roadmapHeader}`}>
         {/* Render an IconButton with the Chevron icon, linking to the homepage */}
-        <IconButton icon={<Chevron />} to={"/"} isLink classes={styles.backButton}>
+        <IconButton icon={<Chevron />} onClick={handleClick} isLink classes={styles.backButton}>
           Go Back
         </IconButton>
         {/* Render the title "Roadmap" */}
