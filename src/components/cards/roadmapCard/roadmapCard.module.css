@@ -1,3 +1,7 @@
+.roadmapCardLink {
+  text-decoration: none;
+}
+
 .roadmapCard {
   display: flex;
   flex-direction: column;
