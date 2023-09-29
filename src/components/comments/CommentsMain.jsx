@@ -1,4 +1,4 @@
-// Importing necessary dependencies and components
+import { useNavigate } from "react-router-dom";
 import { useAppState } from "../../context/AppContext";
 import { useParams } from "react-router-dom";
 import CommentCard from "../cards/commentCard/CommentCard";
@@ -18,19 +18,24 @@ export default function CommentsMain() {
   // Accessing the getAppState function from the AppContext
   const { getRequestById } = useAppState();
 
+  const navigate = useNavigate();
+
   // Fetching the request data based on the feedbackId
   const req = getRequestById(+feedbackId);
 
   // Getting the comments array from the request data, or an empty array if it doesn't exist
   const comments = req.comments || [];
 
+  const handleClick = () => {
+    navigate(-1);
+  };
   // Rendering the main component
   return (
     <div className={styles.commentsMainContainer}>
       <section className={styles.commentsHeader}>
         <div className={styles.topButtons}>
           {/* Render a button with an icon that navigates back to the home page */}
-          <IconButton icon={<Chevron />} to={"/"} isLink>
+          <IconButton icon={<Chevron />} onClick={handleClick} isLink>
             Go Back
           </IconButton>
           {/* Render a feedback modal for editing the feedback */}
