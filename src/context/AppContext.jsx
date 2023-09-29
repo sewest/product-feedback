@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer, useEffect, useState, useCallback } from "react";
+import { createContext, useContext, useReducer, useEffect, useCallback, useState } from "react";
 import data from "../assets/data/data.json";
 
 // Create a context to hold the state of the app
@@ -9,6 +9,7 @@ const AppDispatchContext = createContext(null);
 
 // The main provider component that wraps the app
 export function AppProvider({ children }) {
+  const [isAppLoaded, setIsAppLoaded] = useState(false);
   // The reducer function for updating the state
   function appReducer(state, action) {
     switch (action.type) {
@@ -18,6 +19,16 @@ export function AppProvider({ children }) {
         return { ...action.payload, sortOrder: state.sortOrder };
       case "SET_CATEGORY":
         return { ...state, category: action.payload };
+      case "UPVOTE":
+        return {
+          ...state,
+          productRequests: state.productRequests.map((item) => {
+            if (item.id === action.payload) {
+              return { ...item, upvotes: item.upvotes + 1 };
+            }
+            return item;
+          }),
+        };
       default:
         return state;
     }
@@ -31,7 +42,6 @@ export function AppProvider({ children }) {
 
   // Use the useReducer hook to manage the state of the app
   const [state, dispatch] = useReducer(appReducer, initialData);
-  const [loadedData, setLoadedData] = useState(null);
 
   // Get the total number of suggestions from the state
   const getSuggestionCount = useCallback(() => {
@@ -115,7 +125,9 @@ export function AppProvider({ children }) {
 
   // Save the state to local storage whenever it changes
   useEffect(() => {
-    localStorage.setItem("state", JSON.stringify(state));
+    if (isAppLoaded) {
+      localStorage.setItem("state", JSON.stringify(state));
+    }
   }, [state]);
 
   // Load the state from local storage if it exists, otherwise load from data.json
@@ -124,8 +136,10 @@ export function AppProvider({ children }) {
     if (savedState) {
       const parsedState = JSON.parse(savedState);
       dispatch({ type: "LOAD_STATE", payload: parsedState });
+      setIsAppLoaded(true);
     } else {
       dispatch({ type: "LOAD_STATE", payload: initialData });
+      setIsAppLoaded(true);
     }
   }, []);
 

@@ -19,7 +19,7 @@ export default function SuggestionCard({ sugTitle, sugDescription, sugCategory, 
       <BaseCard classes={styles.suggestionCard}>
         <div className={styles.outerButtonContainer}>
           {/* Render an UpvoteButton component with the number of votes */}
-          <UpvoteButton count={sugVotes} />
+          <UpvoteButton count={sugVotes} pid={sugId} />
         </div>
 
         <div className={styles.cardHeader}>
