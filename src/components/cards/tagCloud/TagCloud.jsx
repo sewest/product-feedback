@@ -35,7 +35,7 @@ export default function TagCloud({ setIsOpen }) {
 
       {/* Generate the chip categores from the JSON data  */}
       {state.productRequests.map((item) => {
-        if (!uniqueCategories.has(item.category)) {
+        if (!uniqueCategories.has(item.category) && item.category !== "ui" && item.category !== "ux") {
           uniqueCategories.add(item.category);
           return (
             <Chip isActive={active === capitalizeFirstLetter(item.category) ? true : false} key={item.id} onClick={(e) => handleClick(e)}>
