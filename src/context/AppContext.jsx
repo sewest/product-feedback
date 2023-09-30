@@ -74,10 +74,15 @@ export function AppProvider({ children }) {
     return state.productRequests.filter((item) => item.status === "suggestion").length;
   }, [state.productRequests]);
 
-  // Get the data by status from the state
   const getDataByStatus = useCallback(
     (status) => {
-      return state.productRequests.filter((item) => item.status === status);
+      // Filter the items by status
+      const filteredItems = state.productRequests.filter((item) => item.status === status);
+
+      // Sort the filtered items in descending order of upvotes
+      const sortedItems = filteredItems.sort((a, b) => b.upvotes - a.upvotes);
+
+      return sortedItems;
     },
     [state.productRequests]
   );
