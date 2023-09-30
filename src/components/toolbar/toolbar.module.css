@@ -52,6 +52,10 @@
   width: fit-content;
 }
 
+.modalButton {
+  margin-left: auto;
+}
+
 /* On very small screens, need to reduce the horizontal padding a bit */
 @media screen and (max-width: 340px) {
   .mainToolbar {

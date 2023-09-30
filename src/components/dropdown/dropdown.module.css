@@ -1,5 +1,5 @@
 /* Style the outer containing div */
-.customSelect {
+.sortBy {
   position: relative;
   width: fit-content;
   height: 100%;
@@ -11,7 +11,7 @@
 }
 
 /* The label for the select */
-.customSelect p {
+.sortBy p {
   color: var(--color-off-white-2);
   font-family: Jost;
   font-size: 0.875rem;
@@ -39,7 +39,7 @@
 
 /* The down arrow */
 .arrow {
-  background: url("../../assets/icons/iconArrowDown.svg") no-repeat;
+  /* background: url("../../assets/icons/iconArrowDown.svg") no-repeat; */
   width: 0.65rem;
   height: 0.65rem;
   background-position: 0 100%;
@@ -62,7 +62,7 @@
   height: 0;
   flex-shrink: 0;
   overflow: hidden;
-  z-index: 3;
+  z-index: 10000;
 }
 
 /* The list items */
@@ -115,13 +115,147 @@
 }
 
 /* When the dropdown is open, rotate the arrow */
-.customSelect.active .arrow {
+.sortBy.active .arrow {
   transform: rotate(180deg);
 }
 
 /* When the dropdown is open, show the list */
-.customSelect.active .selectDropdown {
+.sortBy.active .selectDropdown {
   opacity: 1;
   visibility: visible;
   height: 12rem;
+}
+
+/* *********************************************************************************************************************************************************************************/
+
+/* Style the outer containing div */
+.modalCategory {
+  position: relative;
+  width: 100%;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: var(--color-off-white-1);
+  border-radius: 0.625rem;
+}
+
+/* The label for the select */
+.modalCategory p {
+  display: none;
+}
+
+/* The dropdown button */
+.modalCategory .selectButton {
+  display: flex;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  gap: 0.5rem;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--text-dark);
+  width: 100%;
+  height: 100%;
+  font-family: var(--font-family);
+  font-size: var(--font-size-xxs);
+  font-style: normal;
+  font-weight: var(--font-weight-regular);
+  line-height: normal;
+  padding: 1rem;
+}
+
+/* The down arrow */
+.modalCategory .arrow path {
+  width: 0.5rem;
+  height: 0.25rem;
+  background-position: 0 100%;
+  transition: all 0.5s;
+  stroke: var(--color-blue);
+}
+
+/* The container for the list items. */
+.modalCategory .selectDropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  list-style: none;
+  border-radius: 0.625rem;
+  background: var(--color-white);
+  box-shadow: 0px 10px 40px -7px rgba(55, 63, 104, 0.35);
+  margin-top: 1rem;
+  overflow-y: auto;
+  transition: 0.5s ease;
+  width: 100%;
+  height: 0;
+  flex-shrink: 0;
+  overflow: hidden;
+  z-index: 3;
+}
+
+/* The list items */
+.modalCategory .selectDropdown li {
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  border-bottom: solid rgba(58, 67, 116, 0.15) 0.0625rem;
+}
+
+/* Improper aesthetics if we don't remove the last border*/
+.modalCategory .selectDropdown li:last-of-type {
+  border: none;
+}
+
+.modalCategory .selectDropdown li label {
+  width: 100%;
+  padding: 0.75rem 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  color: #647196;
+  font-family: Jost;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+/* Hover and focus state */
+.modalCategory .selectDropdown li label:hover,
+.modalCategory .selectDropdown li:focus label {
+  color: var(--color-purple);
+}
+
+/* Place a checkmark next to the selected item */
+.modalCategory .selectDropdown input:checked ~ label {
+  background: url("../../assets/icons/iconCheck.svg") no-repeat;
+  background-position: calc(100% - 1.5rem) 50%;
+}
+
+/* Hide the radio input */
+.modalCategory .selectDropdown input[type="radio"] {
+  position: absolute;
+  left: 0;
+  opacity: 0;
+}
+
+/* When the dropdown is open, rotate the arrow */
+.modalCategory.active .arrow {
+  transform: rotate(180deg);
+}
+
+/* When the dropdown is open, show the list */
+.modalCategory.active .selectDropdown {
+  opacity: 1;
+  visibility: visible;
+  height: 15rem;
+}
+
+@media screen and (min-width: 768px) {
+  .modalCategory .selectButton {
+    font-size: var(--font-size-sm);
+  }
 }

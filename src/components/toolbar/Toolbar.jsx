@@ -1,5 +1,6 @@
+import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useAppState } from "../../context/AppContext";
+import { useAppState, useAppDispatch } from "../../context/AppContext";
 import { ReactComponent as Bulb } from "../../assets/icons/iconBulb.svg";
 import { ReactComponent as Chevron } from "../../assets/icons/iconArrowLeft.svg";
 import FeedbackModal from "../feedbackModal/FeedbackModal";
@@ -9,8 +10,11 @@ import Dropdown from "../dropdown/Dropdown";
 import styles from "./toolbar.module.css";
 
 export default function Toolbar() {
-  // Get the count of suggestions from the app state
+  const { label, selected, items } = dropDownData;
+  const startingIndex = 0;
+  const [value, setValue] = useState("Most Upvotes");
   const { getSuggestionCount } = useAppState();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const count = getSuggestionCount();
 
@@ -20,6 +24,13 @@ export default function Toolbar() {
   const handleClick = () => {
     navigate(-1);
   };
+
+  useEffect(() => {
+    dispatch({
+      type: "SET_SORT_ORDER",
+      payload: value,
+    });
+  }, [value]);
 
   return (
     // Render a menu element with different styles based on the current path
@@ -45,11 +56,46 @@ export default function Toolbar() {
         </Title>
       </div>
       {/* Render the Dropdown component with different styles based on the current path */}
-      <Dropdown classes={path === "/roadmap" ? styles.hidden : ""} />
+      <Dropdown classes={path === "/roadmap" ? styles.hidden : ""} data={dropDownData} type={"sortBy"} value={value} setValue={setValue} />
       {/* Render the FeedbackModal component with a buttonType prop and inline styles */}
-      <FeedbackModal buttonType={"button1"} style={{ marginLeft: "auto", justifySelf: "end" }}>
+      <FeedbackModal buttonType={"button1"} classes={styles.modalButton}>
         + Add Feedback
       </FeedbackModal>
     </menu>
   );
 }
+
+const dropDownData = {
+  label: "Sort by : ",
+  selected: "mostUpvotes",
+  items: [
+    {
+      id: "mostUpvotes",
+      text: "Most Upvotes",
+      name: "suggestionFilter",
+      leftIcon: null,
+      rightIcon: null,
+    },
+    {
+      id: "leastUpvotes",
+      text: "Least Upvotes",
+      name: "suggestionFilter",
+      leftIcon: null,
+      rightIcon: null,
+    },
+    {
+      id: "mostComments",
+      text: "Most Comments",
+      name: "suggestionFilter",
+      leftIcon: null,
+      rightIcon: null,
+    },
+    {
+      id: "leastComments",
+      text: "Least Comments",
+      name: "suggestionFilter",
+      leftIcon: null,
+      rightIcon: null,
+    },
+  ],
+};

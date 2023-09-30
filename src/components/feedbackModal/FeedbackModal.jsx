@@ -1,21 +1,26 @@
 import { useEffect, useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAppDispatch } from "../../context/AppContext";
 import { ReactComponent as Chevron } from "../../assets/icons/iconArrowLeft.svg";
 import { ReactComponent as FeedbackPlus } from "../../assets/icons/iconFeedbackCircle.svg";
 import { ReactComponent as EditFeedback } from "../../assets/icons/iconEditFeedback.svg";
 import useWindowWidth from "../../hooks/useWindowWidth";
 import BasicButton from "../buttons/basicButton/BasicButton";
 import IconButton from "../buttons/iconButton/IconButton";
+import Dropdown from "../dropdown/Dropdown";
 import Title from "../title/Title";
 import Text from "../text/Text";
 import styles from "./feedbackModal.module.css";
 
 // This component represents a feedback modal
-export default function FeedbackModal({ children, buttonType, data }) {
-  // State variables
+export default function FeedbackModal({ children, buttonType, data, classes }) {
+  const [value, setValue] = useState("Feature");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [feedbackTitle, setFeedbackTitle] = useState("");
   const [feedbackCategory, setFeedbackCategory] = useState("");
   const [feedbackDetail, setFeedbackDetail] = useState("");
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
   const windowWidth = useWindowWidth();
   const modalRef = useRef(null);
   const bodyRef = useRef(null);
@@ -34,7 +39,8 @@ export default function FeedbackModal({ children, buttonType, data }) {
   }, [data]);
 
   // Function to handle opening and closing the modal
-  const handleModal = () => {
+  const handleModal = (e) => {
+    e.preventDefault();
     const modal = modalRef.current;
     const body = bodyRef.current;
 
@@ -72,7 +78,44 @@ export default function FeedbackModal({ children, buttonType, data }) {
   // Function to handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission logic here
+    // Create a new feedback object
+    const content = {
+      title: feedbackTitle,
+      category: value.toLowerCase(),
+      upvotes: 0,
+      status: "suggestion",
+      description: feedbackDetail,
+    };
+
+    if (!data) {
+      dispatch({
+        type: "ADD_FEEDBACK",
+        payload: content,
+      });
+      navigate(-1);
+      handleModal(e);
+      return;
+    }
+
+    dispatch({
+      type: "EDIT_FEEDBACK",
+      payload: {
+        id: data.id,
+        content,
+      },
+    });
+    navigate(-1);
+    handleModal(e);
+  };
+
+  const handleDelete = (e) => {
+    e.preventDefault();
+    dispatch({
+      type: "DELETE_FEEDBACK",
+      payload: data.id,
+    });
+    navigate(-1);
+    handleModal(e);
   };
 
   // JSX markup for the feedback modal
@@ -94,22 +137,19 @@ export default function FeedbackModal({ children, buttonType, data }) {
               Feedback Title
               <Text size={windowWidth < 768 ? "sm" : "md"}>Add a short, descriptive headline</Text>
               {/* Input field for the feedback title */}
-              <input type="text" id="feedbackTitle" className={styles.titleInput} required value={feedbackTitle} onChange={handleInputChange} />
+              <input type="text" id="feedbackTitle" className={styles.titleInput} value={feedbackTitle} onChange={handleInputChange} />
             </label>
             <label htmlFor="feedbackCategory">
               Category
-              <Text size={windowWidth < 768 ? "sm" : "md"}>Choose a category htmlFor your feedback</Text>
+              <Text size={windowWidth < 768 ? "sm" : "md"}>Choose a category for your feedback</Text>
               {/* Select field for the feedback category */}
-              <select id="feedbackCategory" name="feedbackCategory" required className={styles.category} value={feedbackCategory} onChange={handleInputChange}>
-                <option>Bug</option>
-                <option>Feature</option>
-              </select>
+              <Dropdown data={dropDownData} classes={styles.category} type={"modalCategory"} value={value} setValue={setValue} />
             </label>
             <label htmlFor="feedbackDetail">
               Feedback Detail
               <Text size={windowWidth < 768 ? "sm" : "md"}>Include any specific comments on what should be improved, added, etc.</Text>
               {/* Textarea field for the feedback detail */}
-              <textarea id="feedbackDetail" name="feedbackDetail" className={styles.feedbackDetailText} required value={feedbackDetail} onChange={handleInputChange}></textarea>
+              <textarea id="feedbackDetail" name="feedbackDetail" className={styles.feedbackDetailText} value={feedbackDetail} onChange={handleInputChange}></textarea>
             </label>
             <div className={styles.buttonContainer}>
               {/* Button to submit the form */}
@@ -122,18 +162,62 @@ export default function FeedbackModal({ children, buttonType, data }) {
                 Cancel
               </BasicButton>
               {/* Button to delete the feedback */}
-              <BasicButton buttonType="button4" style={{ marginRight: "auto" }}>
-                Delete
-              </BasicButton>
+              {data && (
+                <BasicButton buttonType="button4" classes={styles.deleteButton} onClick={handleDelete}>
+                  Delete
+                </BasicButton>
+              )}
             </div>
           </form>
         </div>
       </dialog>
 
       {/* Button to open the modal */}
-      <BasicButton buttonType={buttonType} onClick={handleModal}>
+      <BasicButton buttonType={buttonType} onClick={handleModal} classes={classes}>
         {children}
       </BasicButton>
     </>
   );
 }
+
+const dropDownData = {
+  label: null,
+  selected: "feature",
+  items: [
+    {
+      id: "feature",
+      text: "Feature",
+      name: "category",
+      leftIcon: null,
+      rightIcon: null,
+    },
+    {
+      id: "ui",
+      text: "UI",
+      name: "category",
+      leftIcon: null,
+      rightIcon: null,
+    },
+    {
+      id: "ux",
+      text: "UX",
+      name: "category",
+      leftIcon: null,
+      rightIcon: null,
+    },
+    {
+      id: "enhancement",
+      text: "Enhancement",
+      name: "category",
+      leftIcon: null,
+      rightIcon: null,
+    },
+    {
+      id: "bug",
+      text: "Bug",
+      name: "category",
+      leftIcon: null,
+      rightIcon: null,
+    },
+  ],
+};
