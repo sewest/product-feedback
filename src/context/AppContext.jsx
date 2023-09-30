@@ -29,6 +29,32 @@ export function AppProvider({ children }) {
             return item;
           }),
         };
+      case "ADD_FEEDBACK":
+        const newFeedback = {
+          id: state.productRequests.length + 1,
+          ...action.payload,
+        };
+        return {
+          ...state,
+
+          productRequests: [...state.productRequests, newFeedback],
+        };
+      case "EDIT_FEEDBACK":
+        return {
+          ...state,
+          productRequests: state.productRequests.map((item) => {
+            if (item.id === action.payload.id) {
+              return { id: item.id, ...action.payload.content };
+            }
+            return item;
+          }),
+        };
+
+      case "DELETE_FEEDBACK":
+        return {
+          ...state,
+          productRequests: state.productRequests.filter((item) => item.id !== action.payload),
+        };
       default:
         return state;
     }
