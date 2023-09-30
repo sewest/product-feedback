@@ -1,5 +1,6 @@
 import { useAppState } from "../../context/AppContext";
 import Toolbar from "../toolBar/ToolBar";
+import useCapitalizeFirstLetter from "../../hooks/useCapitalizeFirstLetter";
 import SuggestionCard from "../cards/suggestionsCard/SuggestionCard";
 import { ReactComponent as Empty } from "../../assets/icons/iconEmpty.svg";
 import useWindowWidth from "../../hooks/useWindowWidth";
@@ -10,6 +11,7 @@ import styles from "./suggestions.module.css";
 
 export default function Suggestions() {
   const { getFilteredSuggestions } = useAppState();
+  const capitalize = useCapitalizeFirstLetter();
 
   const reqs = getFilteredSuggestions();
   const windowWidth = useWindowWidth();
@@ -27,7 +29,7 @@ export default function Suggestions() {
                   <SuggestionCard
                     sugTitle={req.title}
                     sugDescription={req.description}
-                    sugCategory={req.category}
+                    sugCategory={capitalize(req.category)}
                     sugVotes={req.upvotes}
                     sugComments={req.comments ? req.comments.length : 0}
                     sugId={req.id}
